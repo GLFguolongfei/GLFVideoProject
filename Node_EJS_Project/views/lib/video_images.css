@@ -1,0 +1,78 @@
+
+
+* {
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+}
+
+body {
+    background: white url('../images/bg2.jpeg') no-repeat fixed;
+}
+
+.info {
+    display: none;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    text-align: center;
+    overflow: scroll;;
+}
+
+.item {
+    height: 75vh;
+    padding: 5px 8px;
+    border-radius: 15px;
+    box-sizing: border-box;
+}
+
+.current {
+    width: 45px;
+    height: 45px;
+    position: fixed;
+    right: 20px;
+    top: 40px;
+    z-index: 10;
+}
+
+.addMore {
+    width: 25%;
+    min-width: 200px;
+    max-width: 400px;
+    height: 40px;
+    margin: 15px auto 0px;
+    border: 2px solid gray;
+    border-radius: 20px;
+    display: block;
+    color: wheat;
+    text-align: center;
+    font-size: 16px;
+    line-height: 36px;
+    background-color: transparent;
+}
+
+@media only screen and (max-width: 500px) {
+    .container {
+        padding: 15px 5px;
+    }
+    .itme {
+        width: 100%;
+        height: auto;
+        padding: 5px 8px;
+        box-sizing: border-box;
+    }
+    .current {
+        width: 40px;
+        height: 40px;
+        position: fixed;
+        right: 20px;
+        top: 20px;
+        z-index: 10;
+    }
+}
+
+
