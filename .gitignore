@@ -41,6 +41,7 @@ build/Release
 
 Browser_Project/sources/
 Node_EJS_Project/sources/
+Node_EJS_Project/node_modules/
 
 
 
