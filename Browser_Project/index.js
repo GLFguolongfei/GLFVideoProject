@@ -19,8 +19,10 @@ function playVideo(self) {
             var model = videos[i];
             var title = model.split('.')[0];
             document.title = title;
+            video.classList.add("itmeCurrent")
         } else {
             video.pause();
+            video.classList.remove("itmeCurrent")
         }
     }
 }
@@ -31,7 +33,7 @@ function current(isFast) {
     }
     if (currentEle) {
         var hhhh = $(".container").scrollTop() + $(currentEle).offset().top - $(".container").offset().top;
-        hhhh -= 10;
+        hhhh -= 20;
         $(".container").animate({ scrollTop:  hhhh}, time); 
     } else {
         alert("当前没有正在播放的视频");

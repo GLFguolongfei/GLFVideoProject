@@ -17,44 +17,46 @@ body {
 .container {
     width: 100vw;
     height: 100vh;
-    padding: 40px 20px;
+    padding: 20px;
     box-sizing: border-box;
     text-align: center;
-    overflow: scroll;;
+    overflow: scroll;
 }
 
 .itme {
     height: 65vh;
-    padding: 5px 8px;
+    margin: 0 5px 5px;
+    border-radius: 10px;
     box-sizing: border-box;
+    border: 2px solid transparent;
 }
 
-.current {
+.itmeCurrent {
+    height: 65vh;
+    margin: 0 5px 5px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    border: 2px solid white;
+}
+
+.anchor {
     width: 45px;
     height: 45px;
     position: fixed;
-    right: 20px;
-    top: 45px;
+    right: 13px;
+    top: 23px;
     z-index: 10;
 }
 
 @media only screen and (max-width: 500px) {
     .container {
-        padding: 15px 5px;
+        padding: 10px;
     }
-    .itme {
+    .item {
         width: 100%;
         height: auto;
-        padding: 5px 8px;
+        margin: 0px;
         box-sizing: border-box;
-    }
-    .current {
-        width: 35px;
-        height: 35px;
-        position: fixed;
-        right: 20px;
-        top: 20px;
-        z-index: 10;
     }
 }
 
