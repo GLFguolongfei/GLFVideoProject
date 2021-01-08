@@ -32,11 +32,13 @@ function playVideo(self) {
 }
 
 function endVideo(self) {
+    console.log(self.id)
     if (isCircul) {
         let idStr = '0'
         if (parseInt(self.id) + 1 < videos.length) {
             idStr = parseInt(self.id) + 1 + ''  
         } 
+        console.log(idStr)
         let video = document.getElementById(idStr)
         playVideo(video)
     }
