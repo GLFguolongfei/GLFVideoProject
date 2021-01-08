@@ -27,10 +27,10 @@ function addMore() {
         if (i >= dataArray.length - 1) {
             break;
         } else if (i == lastIndex - 1 && i < dataArray.length) {
-            html += '<video class="item" id="' + i + '" src="' + dataArray[i] + '" controls loop controlslist="nodownload" onplay="playVideo(this)" onended="endVideo(this)"></video>';            
+            html += '<video class="item" id="' + i + '" src="' + dataArray[i] + '" controls loop onplay="playVideo(this)" onended="endVideo(this)"></video>';            
             html += '<button class="addMore" onclick="addMore()">点击加载更多......</button>';
         } else {
-            html += '<video class="item" id="' + i + '" src="' + dataArray[i] + '" controls loop controlslist="nodownload" onplay="playVideo(this)" onended="endVideo(this)"></video>';            
+            html += '<video class="item" id="' + i + '" src="' + dataArray[i] + '" controls loop onplay="playVideo(this)" onended="endVideo(this)"></video>';            
         }
     } 
     $(".container").append(html);

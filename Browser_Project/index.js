@@ -7,7 +7,7 @@ var isCircul = false;
 
 var html = '';
 for (var i = 0; i < videos.length; i++) {
-    html += '<video class="item" id="' + i + '" src="sources/' + videos[i] + '" controls loop controlslist="nodownload" preload="metadata" onplay="playVideo(this)" onended="endVideo(this)"></video>';
+    html += '<video class="item" id="' + i + '" src="sources/' + videos[i] + '" controls loop preload="metadata" onplay="playVideo(this)" onended="endVideo(this)"></video>';
 }
 $(".container").append(html);
 

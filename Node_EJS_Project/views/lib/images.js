@@ -1,10 +1,15 @@
 
 
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 变量 */
 var currentIndex = 0; 
-var pageSize = 15;
+var pageSize = 30;
 var dataArray = [];
+var itemHeight = '65vh'
+var currentEle = "";
 
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 加载完成 */
 $(function () {
+    $('.modal').hide()
     var array = document.getElementsByClassName("source");
     for (var i = 0; i < array.length; i++) {
         var ele = array[i];
@@ -14,6 +19,7 @@ $(function () {
     addMore();
 });
 
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 方法 */
 function addMore() {
     $(".addMore").remove();
     // 这种算法是没有问题的,再好好回想下,不要动
@@ -21,11 +27,11 @@ function addMore() {
     var html = '';
     if (dataArray.length < currentIndex) {
         for (var i = currentIndex-pageSize; i < dataArray.length; i++) {
-            html += '<img class="item" src="' + dataArray[i] + '" />';
+            html += '<img class="item" style="height:' + itemHeight + '" src="' + dataArray[i] + '" onclick="itemClick(this)" />';
         } 
     } else {
         for (var i = currentIndex-pageSize; i < currentIndex; i++) {
-            html += '<img class="item" src="' + dataArray[i] + '"/>';
+            html += '<img class="item" style="height:' + itemHeight + '" src="' + dataArray[i] + '" onclick="itemClick(this)" />';
         } 
         html += '<button class="addMore" onclick="addMore()">点击加载更多......</button>';
         $(".addMore").show();
@@ -33,3 +39,42 @@ function addMore() {
     $(".container").append(html);
 }
   
+function itemClick(self) {
+    $('#showImg').attr('src', self.src)
+    if (currentEle == self) {
+        $('.modal').hide()
+    } else {
+        $('.modal').show()
+    }
+}
+
+function handleModal() {
+    $('.modal').hide()
+}
+
+function imgBig() {
+    var array = document.getElementsByClassName("item");
+    for (var i = 0; i < array.length; i++) {
+        var img = array[i];
+        let heightStr = img.style.height || '65vh'
+        let height = parseInt(heightStr.substr(0, 2)) 
+        if (height + 10 < 100) {
+            itemHeight = height + 10 + 'vh'
+            img.style.height = itemHeight
+        } 
+    }
+}
+
+function imgSmall() {
+    var array = document.getElementsByClassName("item");
+    for (var i = 0; i < array.length; i++) {
+        var img = array[i];
+        let heightStr = img.style.height || '65vh'
+        let height = parseInt(heightStr.substr(0, 2)) 
+        if (height - 10 > 10) {
+            itemHeight = height - 10 + 'vh'
+            img.style.height = itemHeight
+        }
+    }
+}
+

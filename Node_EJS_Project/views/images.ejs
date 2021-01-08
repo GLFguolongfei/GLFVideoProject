@@ -7,7 +7,6 @@
     minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <title>图片</title>
 
-
     <!-- 自带 -->
     <link rel="stylesheet" type="text/css" href="views/lib/video_images.css">
 </head>
@@ -19,6 +18,12 @@
         <% } %>
     </div>
     <div class="container"></div>
+    <img src="views/images/imgBig.png" alt="放大" id="videoCurrent" onclick="imgBig()" />
+    <img src="views/images/imgSmall.png" alt="缩小" id="videoCircul" onclick="imgSmall()" />
+    <div class="modal" onclick="handleModal()">
+        <div class="show"></div>
+        <img src="" alt="大图" id="showImg" />
+    </div>
 
     <!-- jQuery -->
     <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
