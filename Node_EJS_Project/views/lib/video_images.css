@@ -31,7 +31,7 @@ body {
     border: 2px solid transparent
 }
 
-.itmeCurrent {
+.itemCurrent {
     height: 65vh;
     margin: 0 5px 5px;
     border-radius: 10px;
@@ -39,12 +39,21 @@ body {
     border: 2px solid white;
 }
 
-.anchor {
+#videoCurrent {
     width: 45px;
     height: 45px;
     position: fixed;
     right: 13px;
     top: 23px;
+    z-index: 10;
+}
+
+#videoCircul {
+    width: 45px;
+    height: 45px;
+    position: fixed;
+    right: 13px;
+    top: 80px;
     z-index: 10;
 }
 

@@ -1,10 +1,13 @@
 
 
-var currentIndex = 0; 
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 变量 */
+var lastIndex = 0; 
 var pageSize = 15;
 var currentEle = "";
 var dataArray = [];
+var isCircul = false;
 
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 加载完成 */
 $(function () {
     var array = document.getElementsByClassName("source");
     for (var i = 0; i < array.length; i++) {
@@ -15,22 +18,21 @@ $(function () {
     addMore();
 });
 
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 方法 */
 function addMore() {
     $(".addMore").remove();
-    // 这种算法是没有问题的,再好好回想下,不要动
-    currentIndex += pageSize;
+    lastIndex += pageSize;
     var html = '';
-    if (dataArray.length < currentIndex) {
-        for (var i = currentIndex-pageSize; i < dataArray.length; i++) {
-            html += '<video class="item" src="' + dataArray[i] + '" controls loop onplay="playVideo(this)"></video>';
-        } 
-    } else {
-        for (var i = currentIndex-pageSize; i < currentIndex; i++) {
-            html += '<video class="item" src="' + dataArray[i] + '" controls loop onplay="playVideo(this)"></video>';
-        } 
-        html += '<button class="addMore" onclick="addMore()">点击加载更多......</button>';
-        $(".addMore").show();
-    }
+    for (var i = lastIndex - pageSize; i < lastIndex; i++) {
+        if (i >= dataArray.length - 1) {
+            break;
+        } else if (i == lastIndex - 1 && i < dataArray.length) {
+            html += '<video class="item" id="' + i + '" src="' + dataArray[i] + '" controls loop controlslist="nodownload" onplay="playVideo(this)" onended="endVideo(this)"></video>';            
+            html += '<button class="addMore" onclick="addMore()">点击加载更多......</button>';
+        } else {
+            html += '<video class="item" id="' + i + '" src="' + dataArray[i] + '" controls loop controlslist="nodownload" onplay="playVideo(this)" onended="endVideo(this)"></video>';            
+        }
+    } 
     $(".container").append(html);
 }
 
@@ -41,33 +43,53 @@ function playVideo(self) {
         var video = array[i];
         if (video == self) {
             video.play();
-            current(true);
+            video.classList.add("itemCurrent")
+            videoCurrent(true);
             var model = dataArray[i];
             var pathArray = model.split('/');
             var name = pathArray[pathArray.length-1];
             var title = name.split('.')[0];
             document.title = title;
-            video.classList.add("itmeCurrent")
         } else {
             video.pause();
-            video.classList.remove("itmeCurrent")
+            video.classList.remove("itemCurrent")
         }
     }
 }
 
-function current(isFast) {
-    var time = 600;
-    if (isFast) {
-        time = 300;
+function endVideo(self) {
+    if (isCircul) {
+        let idStr = '0'
+        if (parseInt(self.id) + 1 < lastIndex) {
+            idStr = parseInt(self.id) + 1 + ''  
+        } 
+        let video = document.getElementById(idStr)
+        playVideo(video)
     }
+}
+
+function videoCurrent() {
     if (currentEle) {
         var hhhh = $(".container").scrollTop() + $(currentEle).offset().top - $(".container").offset().top;
         hhhh -= 20;
-        $(".container").animate({ scrollTop:  hhhh}, time); 
+        $(".container").animate({ scrollTop:  hhhh}, 300); 
     } else {
         alert("当前没有正在播放的视频");
     }
 }
 
-
+function videoCircul() {
+    isCircul = !isCircul;
+    var array = document.getElementsByTagName("video");
+    for (var i = 0; i < array.length; i++) {
+        var video = array[i];
+        video.loop = !isCircul
+    }
+    var videoCircul = document.getElementById("videoCircul");
+    if (isCircul) {
+        videoCircul.src = 'views/images/circulSelect.png'
+    } else {
+        videoCircul.src = 'views/images/circul.png'
+    }
+}
 
