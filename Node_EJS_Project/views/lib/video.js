@@ -82,16 +82,16 @@ function videoCurrent() {
 
 function videoCircul() {
     isCircul = !isCircul;
-    var array = document.getElementsByTagName("video");
-    for (var i = 0; i < array.length; i++) {
-        var video = array[i];
-        video.loop = !isCircul
-    }
     var videoCircul = document.getElementById("videoCircul");
     if (isCircul) {
         videoCircul.src = 'views/images/circulSelect.png'
     } else {
         videoCircul.src = 'views/images/circul.png'
+    }
+    var array = document.getElementsByTagName("video");
+    for (var i = 0; i < array.length; i++) {
+        var video = array[i];
+        video.loop = !isCircul
     }
 }
 
