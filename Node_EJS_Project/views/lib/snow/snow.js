@@ -51,12 +51,7 @@ function snowFlow(snow) {
             })
         })
     }, 1000 / 60);
+
+    return timer;
 }
-
-snowFlow({
-    num: $(window).width() / 35,
-    text: "❄"
-});
-
-
 

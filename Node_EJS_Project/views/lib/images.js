@@ -6,6 +6,7 @@ var pageSize = 30;
 var dataArray = [];
 var itemHeight = '65vh'
 var currentEle = "";
+var timer; // 圣诞雪花计时器
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 加载完成 */
 $(function () {
@@ -37,6 +38,19 @@ function addMore() {
         $(".addMore").show();
     }
     $(".container").append(html);
+}
+
+function playAudio() {
+    timer = snowFlow({
+        num: $(window).width() / 35,
+        text: "❄"
+    });
+    $(".snow").show()
+}
+
+function pauseAudio() {
+    clearInterval(timer)
+    $(".snow").hide()
 }
   
 function itemClick(self) {
@@ -78,3 +92,6 @@ function imgSmall() {
     }
 }
 
+function imgPlay() {
+    window.location.href = 'http://127.0.0.1:8080/imagePlay'
+}

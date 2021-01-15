@@ -8,6 +8,7 @@
 
 body {
     background: white url('../images/bg2.jpeg') no-repeat fixed;
+    background-size: cover;
 }
 
 .info {
@@ -54,8 +55,8 @@ body {
         padding: 10px;
     }
     .item {
-        width: 100%;
-        height: auto;
+        width: 100% !important;
+        height: auto !important;
         margin: 0px;
         box-sizing: border-box;
     }
@@ -77,6 +78,13 @@ body {
     position: fixed;
     right: 13px;
     top: 80px;
+    z-index: 10;
+}
+
+#audio {
+    position: fixed;
+    left: 0;
+    top: 0;
     z-index: 10;
 }
 
