@@ -2,12 +2,12 @@
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 变量 */
 var currentEle = "";
-var videos = ["1459056880607.mp4","暗恋.mp4","别怕我伤心.mp4","等一分钟.mp4","刚好遇见你.mp4","绝世.mp4","恋人心.mp4","情一动心就痛.mp4","童话镇.mp4","一百个放心.mp4","IMG_0080.mp4","IMG_0656.mp4","Something Just Like This.mp4"];
+var videos = ["1459056880607.mp4","别怕我伤心.mp4","暗恋.mp4","等一分钟.mp4","刚好遇见你.mp4","绝世.mp4","恋人心.mp4","情一动心就痛.mp4","童话镇.mp4","一百个放心.mp4","IMG_0080.mp4","IMG_0656.mp4","Something Just Like This.mp4"];
 var isCircul = false;
 
 var html = '';
 for (var i = 0; i < videos.length; i++) {
-    html += '<video class="item" id="' + i + '" src="sources/' + videos[i] + '" controls loop preload="metadata" onplay="playVideo(this)" onended="endVideo(this)"></video>';
+    html += '<video class="item" id="' + i + '" src="sources/' + videos[i] + '" controls loop onplay="playVideo(this)" onended="endVideo(this)"></video>';
 }
 $(".container").append(html);
 

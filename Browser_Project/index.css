@@ -7,7 +7,8 @@
 }
 
 body {
-    background: white url('images/bg2.jpeg') no-repeat fixed;
+    background: white url('images/bg4.jpeg') no-repeat fixed;
+    background-size: cover;
 }
 
 .info {
