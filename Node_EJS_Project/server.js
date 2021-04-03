@@ -59,8 +59,8 @@ http.createServer(function (req, res) {
 		}, function (err, data) {
 			res.end(data);
 		})
-	} else if (pathname == '/images') {
-		ejs.renderFile('views/images.ejs', {
+	} else if (pathname == '/image') {
+		ejs.renderFile('views/image.ejs', {
 			list: imageArray
 		}, function (err, data) {
 			res.end(data);
