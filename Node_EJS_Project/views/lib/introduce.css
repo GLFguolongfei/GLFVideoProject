@@ -1,12 +1,21 @@
 
 
 body {
-    background: white url('../images/bg4.jpeg') no-repeat fixed;
+    background: white url('../images/bg6.jpeg') no-repeat fixed;
     background-size: cover;
+    background-position: center;
+}
+
+.container {
+	width: 50vw;
+    height: 50vh;
+    position: fixed;
+    left: 25vw;
+    top: 25vh;
 }
 
 p {
-	color: white;
+	color: cadetblue;
     font-size: 18px;
 }
 

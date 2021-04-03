@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="info">
-        <% for(var i = 0; i < list.length; i++) { %>
+        <% for(var i=0; i < list.length; i++) { %>
             <p class="source"><%= list[i] %></p>
             <!-- <img src="http://127.0.0.1:8080<%= list[i] %>" /> -->
         <% } %>
@@ -24,7 +24,8 @@
         <div class="show"></div>
         <img src="" alt="大图" id="showImg" />
     </div>
-    <audio id="audio" src="views/images/阿悠悠.mp3" loop controls="controls" onplay="playAudio()" onpause="pauseAudio()"></audio>
+    <audio id="audio" src="views/images/阿悠悠.mp3" loop controls="controls" onplay="playAudio()"
+        onpause="pauseAudio()"></audio>
 
     <!-- jQuery -->
     <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>

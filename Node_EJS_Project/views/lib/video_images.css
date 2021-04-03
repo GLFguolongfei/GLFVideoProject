@@ -7,7 +7,7 @@
 }
 
 body {
-    background: white url('../images/bg2.jpeg') no-repeat fixed;
+    background: white url('../images/bg7.jpeg') no-repeat fixed;
     background-size: cover;
 }
 
@@ -60,6 +60,17 @@ body {
         margin: 0px;
         box-sizing: border-box;
     }
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ marquee */
+.marquee {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+
+.marqueeItem {
+    height: 30vh !important;
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ positon */

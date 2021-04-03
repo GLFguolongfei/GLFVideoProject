@@ -46,11 +46,18 @@ function playAudio() {
         text: "❄"
     });
     $(".snow").show()
+
+    var html = '';
+    for (var i = 0; i < dataArray.length; i++) {
+        html += '<img class="item marqueeItem" style="height:' + itemHeight + '" src="' + dataArray[i] + '" onclick="itemClick(this)" />';
+    } 
+    $(".marquee").append(html);
 }
 
 function pauseAudio() {
     clearInterval(timer)
     $(".snow").hide()
+    $(".marqueeItem").remove();
 }
   
 function itemClick(self) {
