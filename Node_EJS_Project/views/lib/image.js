@@ -1,5 +1,3 @@
-
-
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 变量 */
 var currentIndex = 0; 
 var pageSize = 30;

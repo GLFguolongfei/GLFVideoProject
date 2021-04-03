@@ -60,67 +60,17 @@ body {
     }
 }
 
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ marquee */
-.marquee {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-}
-
-.marqueeItem {
-    height: 30vh !important;
-}
-
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ positon */
-#videoCurrent {
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ buttons */
+.buttons {
     width: 45px;
-    height: 45px;
     position: fixed;
     right: 13px;
     top: 23px;
     z-index: 10;
 }
 
-#videoCircul {
+.buttons img {
     width: 45px;
     height: 45px;
-    position: fixed;
-    right: 13px;
-    top: 80px;
-    z-index: 10;
 }
 
-#audio {
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 10;
-}
-
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ modal */
-.modal {
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.show {
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: white;
-    opacity: 0.6;
-}
-
-#showImg {
-    height: 100vh;
-    position: relative;
-    z-index: 10;
-}
