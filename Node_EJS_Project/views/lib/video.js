@@ -1,6 +1,6 @@
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 变量 */
 var lastIndex = 0; 
-var pageSize = 15;
+var pageSize = 30;
 var currentEle = "";
 var dataArray = [];
 var isCircul = false;
@@ -68,6 +68,33 @@ function endVideo(self) {
     }
 }
 
+
+function imgBig() {
+    var array = document.getElementsByClassName("item");
+    for (var i = 0; i < array.length; i++) {
+        var img = array[i];
+        let heightStr = img.style.height || '65vh'
+        let height = parseInt(heightStr.substr(0, 2)) 
+        if (height + 10 < 100) {
+            itemHeight = height + 10 + 'vh'
+            img.style.height = itemHeight
+        } 
+    }
+}
+
+function imgSmall() {
+    var array = document.getElementsByClassName("item");
+    for (var i = 0; i < array.length; i++) {
+        var img = array[i];
+        let heightStr = img.style.height || '65vh'
+        let height = parseInt(heightStr.substr(0, 2)) 
+        if (height - 10 > 10) {
+            itemHeight = height - 10 + 'vh'
+            img.style.height = itemHeight
+        }
+    }
+}
+
 function videoCurrent() {
     if (currentEle) {
         var hhhh = $(".container").scrollTop() + $(currentEle).offset().top - $(".container").offset().top;
@@ -92,4 +119,6 @@ function videoCircul() {
         video.loop = !isCircul
     }
 }
+
+
 

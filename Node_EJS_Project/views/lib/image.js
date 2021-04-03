@@ -1,6 +1,6 @@
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 变量 */
 var currentIndex = 0; 
-var pageSize = 30;
+var pageSize = 60;
 var dataArray = [];
 var itemHeight = '65vh'
 var currentEle = "";
@@ -95,8 +95,4 @@ function imgSmall() {
             img.style.height = itemHeight
         }
     }
-}
-
-function imgPlay() {
-    window.location.href = 'http://127.0.0.1:8080/imagePlay'
 }
