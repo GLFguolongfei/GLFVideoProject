@@ -36,6 +36,7 @@ body {
     border-radius: 10px;
     box-sizing: border-box;
     border: 2px solid white;
+    box-shadow: 10px 10px 30px white;
 }
 
 .addMore {

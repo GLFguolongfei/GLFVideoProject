@@ -25,28 +25,32 @@ function readDirSync(filePath) {
 		if (info.isDirectory()) {
 			readDirSync(subFilePath);
 		} else {
-			// 找到 .mp4 .rmvb 文件
-			let fileNameReg1 = /\.mp4|\.rmvb/g;
+			// 找到 .png .jpg .jpeg .jif 文件
+			let fileNameReg1 = /\.png|\.jpg|\.jpeg|\.jif/g;
 			let shouldFormat1 = fileNameReg1.test(subFilePath.toLowerCase());
 			if (shouldFormat1) {
 				var str = subFilePath.substring(__dirname.length, subFilePath.length);
-				videoArray.push(str);
+				imageArray.push(str);
 			}
-			// 找到 .png .jpg .jpeg .jif 文件
-			let fileNameReg2 = /\.png|\.jpg|\.jpeg|\.jif/g;
+			// 找到 .mp4 .rmvb .mkv 文件
+			let fileNameReg2 = /\.mp4|\.rmvb|\.mkv/g;
 			let shouldFormat2 = fileNameReg2.test(subFilePath.toLowerCase());
 			if (shouldFormat2) {
 				var str = subFilePath.substring(__dirname.length, subFilePath.length);
-				imageArray.push(str);
+				videoArray.push(str);
 			}
 		}
 	})
 }
 
-readDirSync(rootPath)
-
-console.log("图片个数: " + imageArray.length);
-console.log("视频个数: " + videoArray.length);
+function bianLi() {
+	imageArray = [];
+	videoArray = [];
+	readDirSync(rootPath)
+	console.log("资源路径: " + rootPath);
+	console.log("图片个数: " + imageArray.length);
+	console.log("视频个数: " + videoArray.length);
+}
 
 http.createServer(function (req, res) {
 	// console.log(req.url);
@@ -60,12 +64,14 @@ http.createServer(function (req, res) {
 			res.end(data);
 		})
 	} else if (pathname == '/image') {
+		bianLi()
 		ejs.renderFile('views/image.ejs', {
 			list: imageArray
 		}, function (err, data) {
 			res.end(data);
 		})
 	} else if (pathname == '/video') {
+		bianLi()
 		ejs.renderFile('views/video.ejs', {
 			list: videoArray
 		}, function (err, data) {

@@ -30,14 +30,6 @@ body {
     border: 2px solid transparent
 }
 
-.itemCurrent {
-    height: 65vh;
-    margin: 0 5px 5px;
-    border-radius: 10px;
-    box-sizing: border-box;
-    border: 2px solid white;
-}
-
 .addMore {
     width: 100%;
     height: 60px;
