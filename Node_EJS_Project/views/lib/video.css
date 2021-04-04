@@ -40,7 +40,14 @@ body {
 }
 
 .addMore {
-    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.addMore button {
+    width: 35%;
+    max-width: 300px;
+    min-width: 200px;
     height: 60px;
     color: wheat;
     text-align: center;

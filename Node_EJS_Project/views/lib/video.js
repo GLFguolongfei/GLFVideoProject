@@ -1,9 +1,10 @@
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 变量 */
 var lastIndex = 0; 
-var pageSize = 30;
+var pageSize = 15;
 var currentEle = "";
 var dataArray = [];
 var isCircul = false;
+var itemHeight = '60vh'
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 加载完成 */
 $(function () {
@@ -17,20 +18,29 @@ $(function () {
 });
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 方法 */
-function addMore() {
+function addMore(type = 1) {
     $(".addMore").remove();
-    lastIndex += pageSize;
     var html = '';
-    for (var i = lastIndex - pageSize; i < lastIndex; i++) {
-        if (i >= dataArray.length - 1) {
-            break;
-        } else if (i == lastIndex - 1 && i < dataArray.length) {
-            html += '<video class="item" id="' + i + '" src="' + dataArray[i] + '" controls loop onplay="playVideo(this)" onended="endVideo(this)"></video>';            
-            html += '<button class="addMore" onclick="addMore()">点击加载更多......</button>';
-        } else {
-            html += '<video class="item" id="' + i + '" src="' + dataArray[i] + '" controls loop onplay="playVideo(this)" onended="endVideo(this)"></video>';            
-        }
-    } 
+    if (type == 1) {
+        lastIndex += pageSize;
+        for (var i = lastIndex - pageSize; i < lastIndex; i++) {
+            if (i >= dataArray.length - 1) {
+                break;
+            } else if (i == lastIndex - 1 && i < dataArray.length) {
+                html += '<video class="item" id="' + i + '" style="height:' + itemHeight + '" src="' + dataArray[i] + '" controls loop onplay="playVideo(this)" onended="endVideo(this)"></video>';   
+                html += '<div class="addMore">'         
+                html += '<button onclick="addMore(1)">点击加载更多......</button>';
+                html += '<button onclick="addMore(2)">点击加载全部......</button>';
+                html += '</div>'         
+            } else {
+                html += '<video class="item" id="' + i + '" style="height:' + itemHeight + '" src="' + dataArray[i] + '" controls loop onplay="playVideo(this)" onended="endVideo(this)"></video>';            
+            }
+        } 
+    } else {
+        for (var i = lastIndex; i < dataArray.length; i++) {
+            html += '<video class="item" id="' + i + '" style="height:' + itemHeight + '" src="' + dataArray[i] + '" controls loop onplay="playVideo(this)" onended="endVideo(this)"></video>';            
+        } 
+    }
     $(".container").append(html);
 }
 

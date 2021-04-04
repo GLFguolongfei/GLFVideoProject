@@ -1,10 +1,10 @@
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 变量 */
 var currentIndex = 0; 
-var pageSize = 60;
+var pageSize = 30;
 var dataArray = [];
-var itemHeight = '65vh'
 var currentEle = "";
 var timer; // 圣诞雪花计时器
+var itemHeight = '60vh'
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 加载完成 */
 $(function () {
@@ -19,21 +19,28 @@ $(function () {
 });
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 方法 */
-function addMore() {
+function addMore(type = 1) {
     $(".addMore").remove();
-    // 这种算法是没有问题的,再好好回想下,不要动
-    currentIndex += pageSize;
     var html = '';
-    if (dataArray.length < currentIndex) {
-        for (var i = currentIndex-pageSize; i < dataArray.length; i++) {
-            html += '<img class="item" style="height:' + itemHeight + '" src="' + dataArray[i] + '" onclick="itemClick(this)" />';
-        } 
+    if (type == 1) {
+        currentIndex += pageSize;
+        if (dataArray.length < currentIndex) {
+            for (var i = currentIndex-pageSize; i < dataArray.length; i++) {
+                html += '<img class="item" style="height:' + itemHeight + '" src="' + dataArray[i] + '" onclick="itemClick(this)" />';
+            } 
+        } else {
+            for (var i = currentIndex-pageSize; i < currentIndex; i++) {
+                html += '<img class="item" style="height:' + itemHeight + '" src="' + dataArray[i] + '" onclick="itemClick(this)" />';
+            } 
+            html += '<div class="addMore">'         
+            html += '<button onclick="addMore(1)">点击加载更多......</button>';
+            html += '<button onclick="addMore(2)">点击加载全部......</button>';
+            html += '</div>' 
+        }
     } else {
-        for (var i = currentIndex-pageSize; i < currentIndex; i++) {
+        for (var i = currentIndex; i < dataArray.length; i++) {
             html += '<img class="item" style="height:' + itemHeight + '" src="' + dataArray[i] + '" onclick="itemClick(this)" />';
         } 
-        html += '<button class="addMore" onclick="addMore()">点击加载更多......</button>';
-        $(".addMore").show();
     }
     $(".container").append(html);
 }
