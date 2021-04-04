@@ -70,7 +70,7 @@ function endVideo(self) {
     console.log(self.id)
     if (isCircul) {
         let idStr = '0'
-        if (parseInt(self.id) + 1 < lastIndex) {
+        if (parseInt(self.id) < lastIndex) {
             idStr = parseInt(self.id) + 1 + ''  
         } 
         console.log(idStr)
