@@ -40,6 +40,7 @@ function addMore(type = 1) {
         for (var i = lastIndex; i < dataArray.length; i++) {
             html += '<video class="item" id="' + i + '" style="height:' + itemHeight + '" src="' + dataArray[i] + '" controls loop onplay="playVideo(this)" onended="endVideo(this)"></video>';            
         } 
+        lastIndex = dataArray.length - 1
     }
     $(".container").append(html);
 }
