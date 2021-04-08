@@ -5,7 +5,7 @@
 }
 
 body {
-    background: white url('../images/bg7.jpeg') no-repeat fixed;
+    background: white url('../images/bg9.jpeg') no-repeat fixed;
     background-size: cover;
 }
 
@@ -56,6 +56,9 @@ body {
         height: auto !important;
         margin: 0px;
         box-sizing: border-box;
+    }
+    .marqueeItem {
+        width: auto !important;
     }
 }
 
