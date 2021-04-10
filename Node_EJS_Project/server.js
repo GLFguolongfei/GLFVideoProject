@@ -5,9 +5,8 @@ var path = require("path")
 var urlencode = require('urlencode');
 var ejs = require('ejs');
 var mimeModul = require('./getmime.js');
+var { sourceType, rootPath, ipUrl } = require('./project.config.js')
 
-var relativePath = '/sources';
-var rootPath = path.join(__dirname) + relativePath; // __dirname当前路径(不包含文件名)
 var imageArray = [];
 var videoArray = [];
 
@@ -29,14 +28,14 @@ function readDirSync(filePath) {
 			let fileNameReg1 = /\.png|\.jpg|\.jpeg|\.jif/g;
 			let shouldFormat1 = fileNameReg1.test(subFilePath.toLowerCase());
 			if (shouldFormat1) {
-				var str = subFilePath.substring(__dirname.length, subFilePath.length);
+				var str = subFilePath.substring(rootPath.length, subFilePath.length);
 				imageArray.push(str);
 			}
 			// 找到 .mp4 .rmvb .mkv 文件
 			let fileNameReg2 = /\.mp4|\.rmvb|\.mkv/g;
 			let shouldFormat2 = fileNameReg2.test(subFilePath.toLowerCase());
 			if (shouldFormat2) {
-				var str = subFilePath.substring(__dirname.length, subFilePath.length);
+				var str = subFilePath.substring(rootPath.length, subFilePath.length);
 				videoArray.push(str);
 			}
 		}
@@ -66,6 +65,8 @@ http.createServer(function (req, res) {
 	} else if (pathname == '/image') {
 		bianLi()
 		ejs.renderFile('views/image.ejs', {
+			sourceType: sourceType,
+			ipUrl: ipUrl,
 			list: imageArray
 		}, function (err, data) {
 			res.end(data);
@@ -73,6 +74,8 @@ http.createServer(function (req, res) {
 	} else if (pathname == '/video') {
 		bianLi()
 		ejs.renderFile('views/video.ejs', {
+			sourceType: sourceType,
+			ipUrl: ipUrl,
 			list: videoArray
 		}, function (err, data) {
 			res.end(data);
@@ -99,9 +102,9 @@ http.createServer(function (req, res) {
 			}
 		});
 	}
-}).listen(8080);
+}).listen(8090);
 
-console.log('Server running at http://127.0.0.1:8080/');
+console.log('Server running at http://127.0.0.1:8090/');
 
 
 

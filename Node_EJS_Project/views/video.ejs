@@ -12,6 +12,8 @@
 </head>
 <body>
     <div class="info">
+        <p class="sourceType"><%= sourceType %></p>
+        <p class="ipUrl"><%= ipUrl %></p>
         <% for(var i = 0; i < list.length; i++) { %>
             <p class="source"><%= list[i] %></p>
             <!-- <video src="http://127.0.0.1:8080<%= list[i] %>" controls onplay="playVideo(this)"></video> -->

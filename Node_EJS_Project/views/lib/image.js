@@ -1,4 +1,8 @@
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 变量 */
+var sourceType = $('.sourceType').text();
+var ipUrl = $('.ipUrl').text();
+var documentTitle = '图片'
+
 var currentIndex = 0; 
 var pageSize = 30;
 var dataArray = [];
@@ -8,14 +12,28 @@ var itemHeight = '60vh'
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 加载完成 */
 $(function () {
+    // 加载资源
     $('.modal').hide()
     var array = document.getElementsByClassName("source");
     for (var i = 0; i < array.length; i++) {
         var ele = array[i];
-        var src = "http://127.0.0.1:8080" + ele.textContent;
+        var src = ipUrl + ele.textContent;
         dataArray.push(src);
     }
     addMore();
+    // 设置标题
+    let str = ''
+    switch (+sourceType) {
+        case 1:
+            str = '本地'
+            break;
+        case 2:
+            str = 'iCloud'
+            break;
+        default:
+    }
+    documentTitle = str + '图片(' + array.length + ')'
+    document.title = documentTitle
 });
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 方法 */
