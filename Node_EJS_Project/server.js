@@ -32,7 +32,7 @@ function readDirSync(filePath) {
 				imageArray.push(str);
 			}
 			// 找到 .mp4 .rmvb .mkv 文件
-			let fileNameReg2 = /\.mp4|\.rmvb|\.mkv/g;
+			let fileNameReg2 = /\.mp4|\.rmvb|\.mkv|\.mov/g;
 			let shouldFormat2 = fileNameReg2.test(subFilePath.toLowerCase());
 			if (shouldFormat2) {
 				var str = subFilePath.substring(rootPath.length, subFilePath.length);
