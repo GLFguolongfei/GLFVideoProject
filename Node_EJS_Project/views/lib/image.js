@@ -12,6 +12,8 @@ var itemHeight = '60vh'
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 加载完成 */
 $(function () {
+    currentIndex = getQueryString('index') || 0
+    currentIndex = parseInt(currentIndex)
     // 加载资源
     $('.modal').hide()
     var array = document.getElementsByClassName("source");
@@ -19,6 +21,10 @@ $(function () {
         var ele = array[i];
         var src = ipUrl + ele.textContent;
         dataArray.push(src);
+    }
+    if (currentIndex > array.length - 1) {
+        alert('下标已超出视频资源数量')
+        return
     }
     addMore();
     // 设置标题
@@ -121,3 +127,14 @@ function imgSmall() {
         }
     }
 }
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 工具 */
+// 采用正则表达式获取地址栏参数
+// alert(getQueryString("password"));
+function getQueryString(name) {
+    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if(r!=null)return  decodeURI(r[2]); return null;
+}
+
+
