@@ -3,6 +3,7 @@ var sourceType = $('.sourceType').text();
 var ipUrl = $('.ipUrl').text();
 var documentTitle = '图片'
 
+var initIndex = 0;
 var currentIndex = 0; 
 var pageSize = 30;
 var dataArray = [];
@@ -14,6 +15,7 @@ var itemHeight = '60vh'
 $(function () {
     currentIndex = getQueryString('index') || 0
     currentIndex = parseInt(currentIndex)
+    initIndex = parseInt(currentIndex)
     // 加载资源
     $('.modal').hide()
     var array = document.getElementsByClassName("source");
@@ -38,6 +40,12 @@ function addMore(type = 1) {
         alert('图片太多，不建议一次性加载全部')
         return
     }
+    if (currentIndex - initIndex > 500) {
+        var url = window.location.origin + window.location.pathname + '?index=' + currentIndex
+        // window.location.replace(url)
+        window.location.href = url
+        return
+    }
     $(".addMore").remove();
     var html = '';
     if (type == 1) {
@@ -59,6 +67,7 @@ function addMore(type = 1) {
         for (var i = currentIndex; i < dataArray.length; i++) {
             html += '<img class="item" style="height:' + itemHeight + '" src="' + dataArray[i] + '" onclick="itemClick(this)" />';
         } 
+        currentIndex = dataArray.length - 1
     }
     $(".container").append(html);
 }

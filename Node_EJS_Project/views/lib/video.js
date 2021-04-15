@@ -3,7 +3,8 @@ var sourceType = $('.sourceType').text();
 var ipUrl = $('.ipUrl').text();
 var documentTitle = '视频'
 
-var lastIndex = 0; 
+var initIndex = 0;
+var currentIndex = 0; 
 var pageSize = 15;
 var currentEle = "";
 var dataArray = [];
@@ -13,8 +14,9 @@ var itemHeight = '60vh'
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 加载完成 */
 $(function () {
-    lastIndex = getQueryString('index') || 0
-    lastIndex = parseInt(lastIndex)
+    currentIndex = getQueryString('index') || 0
+    currentIndex = parseInt(currentIndex)
+    initIndex = parseInt(currentIndex)
     // 加载资源
     var array = document.getElementsByClassName("source");
     for (var i = 0; i < array.length; i++) {
@@ -22,7 +24,7 @@ $(function () {
         var src = ipUrl + ele.textContent;
         dataArray.push(src);
     }
-    if (lastIndex > array.length - 1) {
+    if (currentIndex > array.length - 1) {
         alert('下标已超出视频资源数量')
         return
     }
@@ -34,18 +36,24 @@ $(function () {
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 方法 */
 function addMore(type = 1) {
-    if (type == 2 && dataArray.length - lastIndex > 200) {
+    if (type == 2 && dataArray.length - currentIndex > 200) {
         alert('视频太多，不建议一次性加载全部')
+        return
+    }
+    if (currentIndex - initIndex > 200) {
+        var url = window.location.origin + window.location.pathname + '?index=' + currentIndex
+        // window.location.replace(url)
+        window.location.href = url
         return
     }
     $(".addMore").remove();
     var html = '';
     if (type == 1) {
-        lastIndex += pageSize;
-        for (var i = lastIndex - pageSize; i < lastIndex; i++) {
+        currentIndex += pageSize;
+        for (var i = currentIndex - pageSize; i < currentIndex; i++) {
             if (i >= dataArray.length - 1) {
                 break;
-            } else if (i == lastIndex - 1 && i < dataArray.length) {
+            } else if (i == currentIndex - 1 && i < dataArray.length) {
                 html += '<video class="item" id="' + i + '" style="height:' + itemHeight + '" src="' + dataArray[i] + '" controls loop onplay="playVideo(this)" onended="endVideo(this)"></video>';   
                 html += '<div class="addMore">'         
                 html += '<button onclick="addMore(1)">点击加载更多......</button>';
@@ -56,10 +64,10 @@ function addMore(type = 1) {
             }
         } 
     } else {
-        for (var i = lastIndex; i < dataArray.length; i++) {
+        for (var i = currentIndex; i < dataArray.length; i++) {
             html += '<video class="item" id="' + i + '" style="height:' + itemHeight + '" src="' + dataArray[i] + '" controls loop onplay="playVideo(this)" onended="endVideo(this)"></video>';            
         } 
-        lastIndex = dataArray.length - 1
+        currentIndex = dataArray.length - 1
     }
     $(".container").append(html);
 }
@@ -90,7 +98,7 @@ function endVideo(self) {
     console.log(self.id)
     if (isCircul) {
         let idStr = '0'
-        if (parseInt(self.id) < lastIndex) {
+        if (parseInt(self.id) < currentIndex) {
             idStr = parseInt(self.id) + 1 + ''  
         } 
         console.log(idStr)
