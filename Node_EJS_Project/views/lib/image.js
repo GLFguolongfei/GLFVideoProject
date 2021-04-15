@@ -28,17 +28,7 @@ $(function () {
     }
     addMore();
     // 设置标题
-    let str = ''
-    switch (+sourceType) {
-        case 1:
-            str = '本地'
-            break;
-        case 2:
-            str = 'iCloud'
-            break;
-        default:
-    }
-    documentTitle = str + '图片(' + array.length + ')'
+    documentTitle = '图片(' + array.length + ')'
     document.title = documentTitle
 });
 

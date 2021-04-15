@@ -3,8 +3,13 @@
 rootDir=$(cd $(dirname $0); pwd)
 echo ${rootDir}
 
-# 1-本地(sources文件夹)资源,2-iCloud资源
+# 1-本地(sources文件夹)资源,2-iCloud资源,3-Document资源
 sourceType=2
+
+if [ $# -gt 0 ]
+then
+	sourceType=$1
+fi
 
 # sed
 # 将文件中的"let sourceType = "全部替换为"let sourceType = 1 //"
