@@ -4,7 +4,7 @@ var ipUrl = $('.ipUrl').text();
 var documentTitle = '视频'
 
 var lastIndex = 0; 
-var pageSize = 20;
+var pageSize = 15;
 var currentEle = "";
 var dataArray = [];
 var isCircul = false;
