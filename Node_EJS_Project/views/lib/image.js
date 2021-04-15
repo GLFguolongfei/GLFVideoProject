@@ -4,7 +4,7 @@ var ipUrl = $('.ipUrl').text();
 var documentTitle = '图片'
 
 var currentIndex = 0; 
-var pageSize = 30;
+var pageSize = 60;
 var dataArray = [];
 var currentEle = "";
 var timer; // 圣诞雪花计时器
