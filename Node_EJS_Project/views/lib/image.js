@@ -17,7 +17,6 @@ $(function () {
     currentIndex = parseInt(currentIndex)
     initIndex = parseInt(currentIndex)
     // 加载资源
-    $('.modal').hide()
     var array = document.getElementsByClassName("source");
     for (var i = 0; i < array.length; i++) {
         var ele = array[i];
@@ -25,8 +24,9 @@ $(function () {
         dataArray.push(src);
     }
     if (currentIndex > array.length - 1) {
-        alert('下标已超出视频资源数量')
-        return
+        alert('下标已超出视频资源数量, 默认从0开始')
+        currentIndex = 0
+        initIndex = 0
     }
     addMore();
     // 设置标题

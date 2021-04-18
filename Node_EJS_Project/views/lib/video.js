@@ -25,8 +25,9 @@ $(function () {
         dataArray.push(src);
     }
     if (currentIndex > array.length - 1) {
-        alert('下标已超出视频资源数量')
-        return
+        alert('下标已超出视频资源数量, 默认从0开始')
+        currentIndex = 0
+        initIndex = 0
     }
     addMore();
     // 设置标题
