@@ -13,6 +13,7 @@ var itemHeight = '60vh'
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 加载完成 */
 $(function () {
+    $('.modal').hide()
     currentIndex = getQueryString('index') || 0
     currentIndex = parseInt(currentIndex)
     initIndex = parseInt(currentIndex)
