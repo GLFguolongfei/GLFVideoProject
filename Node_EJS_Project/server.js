@@ -71,6 +71,15 @@ http.createServer(function (req, res) {
 		}, function (err, data) {
 			res.end(data);
 		})
+	} else if (pathname == '/img') {
+		bianLi()
+		ejs.renderFile('views/img.ejs', {
+			sourceType: sourceType,
+			ipUrl: ipUrl,
+			list: imageArray
+		}, function (err, data) {
+			res.end(data);
+		})
 	} else if (pathname == '/video') {
 		bianLi()
 		ejs.renderFile('views/video.ejs', {

@@ -1,5 +1,3 @@
-
-
 function snowFlow(snow) {
     var screenW = $(window).width(),
         screenH = $(window).height(),
