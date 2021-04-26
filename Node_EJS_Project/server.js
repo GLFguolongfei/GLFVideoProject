@@ -1,15 +1,21 @@
+/** Official */
 var fs = require("fs")
 var http = require('http');
 var url = require('url');
 var path = require("path")
+/** Vendor */
 var urlencode = require('urlencode');
 var ejs = require('ejs');
+var axios = require("axios")
+/** Custom */
 var mimeModul = require('./getmime.js');
 var { sourceType, rootPath, ipUrl } = require('./project.config.js')
 
-var imageArray = [];
-var videoArray = [];
+var imageArray = []
+var videoArray = []
+var robotArray = []
 
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 遍历数据 */
 // 使用异步获取路径
 // 参数是遍历文件的根路径
 function readDirSync(filePath) {
@@ -42,6 +48,7 @@ function readDirSync(filePath) {
 	})
 }
 
+// 遍历
 function bianLi() {
 	imageArray = [];
 	videoArray = [];
@@ -51,6 +58,29 @@ function bianLi() {
 	console.log("视频个数: " + videoArray.length);
 }
 
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 网络爬虫 */
+// 网络数据爬取
+function networkRobot() {
+	let initUrl = "http://www.baidu.com"
+	axios.get(initUrl).then(resp => {
+		// console.log(resp.data)
+		if (isString(resp.data)) {
+			let m = resp.data.matchAll(new RegExp('^http.*.png$', 'g'))
+			console.log(m)  
+		}
+	}).catch(function (error) {
+		console.log(error);
+	});
+}
+
+// 判断对象是否是字符串
+function isString(arg) {
+	return typeof arg == "string";
+}
+
+networkRobot()
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 起服务 */
 http.createServer(function (req, res) {
 	// console.log(req.url);
 	res.writeHead(200, { "Content-Type": "text/html;charset='utf-8'" });
