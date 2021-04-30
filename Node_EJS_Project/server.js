@@ -58,28 +58,6 @@ function bianLi() {
 	console.log("视频个数: " + videoArray.length);
 }
 
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 网络爬虫 */
-// 网络数据爬取
-function networkRobot() {
-	let initUrl = "http://www.baidu.com"
-	axios.get(initUrl).then(resp => {
-		// console.log(resp.data)
-		if (isString(resp.data)) {
-			let m = resp.data.matchAll(new RegExp('^http.*.png$', 'g'))
-			console.log(m)  
-		}
-	}).catch(function (error) {
-		console.log(error);
-	});
-}
-
-// 判断对象是否是字符串
-function isString(arg) {
-	return typeof arg == "string";
-}
-
-networkRobot()
-
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 起服务 */
 http.createServer(function (req, res) {
 	// console.log(req.url);
@@ -95,15 +73,6 @@ http.createServer(function (req, res) {
 	} else if (pathname == '/image') {
 		bianLi()
 		ejs.renderFile('views/image.ejs', {
-			sourceType: sourceType,
-			ipUrl: ipUrl,
-			list: imageArray
-		}, function (err, data) {
-			res.end(data);
-		})
-	} else if (pathname == '/img') {
-		bianLi()
-		ejs.renderFile('views/img.ejs', {
 			sourceType: sourceType,
 			ipUrl: ipUrl,
 			list: imageArray
