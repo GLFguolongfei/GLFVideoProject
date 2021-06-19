@@ -71,6 +71,15 @@ function nextVideo() {
     $('#video').attr('src', videoSrc)
 }
 
+function switchSrc() {
+    let src = $('#iframe').attr('src')
+    if (src.indexOf('video') > -1) {
+        $('#iframe').attr('src', 'http://127.0.0.1:8090/image?index=0')
+    } else {
+        $('#iframe').attr('src', 'http://127.0.0.1:8090/video?index=0')
+    }
+}
+
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 工具 */
 // 采用正则表达式获取地址栏参数
 // alert(getQueryString("password"));

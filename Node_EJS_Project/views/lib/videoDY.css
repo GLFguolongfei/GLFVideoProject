@@ -20,6 +20,13 @@ body {
     height: calc(100vh - 40px);
 }
 
+iframe {
+    flex: 1;
+    margin-left: 20px;
+    margin-top: -20px;
+    margin-bottom: -20px;
+}
+
 @media only screen and (max-width: 500px) {
     body {
         padding: 0px;
@@ -37,13 +44,19 @@ body {
         bottom: 0;
         flex-direction: row !important;
     }
+    iframe {
+        display: none;
+    }
+    .buttons2 p:nth-child(3) {
+        display: none;
+    }
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ buttons */
 .buttons {
     width: 45px;
     position: fixed;
-    right: 13px;
+    left: 13px;
     top: 23px;
     z-index: 10;
 }
@@ -66,5 +79,6 @@ body {
     border-radius: 30px;
     color: rgba(2555,255,255,0.8);
     font-weight: bold;
+    text-align: center;
 }
 
