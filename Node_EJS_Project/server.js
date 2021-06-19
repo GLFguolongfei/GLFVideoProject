@@ -88,6 +88,15 @@ http.createServer(function (req, res) {
 		}, function (err, data) {
 			res.end(data);
 		})
+	}  else if (pathname == '/videoDY') {
+		bianLi()
+		ejs.renderFile('views/videoDY.ejs', {
+			sourceType: sourceType,
+			ipUrl: ipUrl,
+			list: videoArray
+		}, function (err, data) {
+			res.end(data);
+		})
 	} else {
 		// var currentPath = req.url.substring(1, req.url.length);
 		var currentPath = "." + req.url;

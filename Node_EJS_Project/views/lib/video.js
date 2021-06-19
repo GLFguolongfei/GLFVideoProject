@@ -89,7 +89,7 @@ function playVideo(self) {
             var name = pathArray[pathArray.length-1];
             var title = name.split('.')[0];
             // 设置标题
-            document.title = documentTitle + '-' + (i + 1) + '-' + title;
+            document.title = (currentIndex + 1) + '/' + dataArray.length + '-' + title;
         } else {
             video.pause();
             video.classList.remove("itemCurrent")
@@ -109,7 +109,6 @@ function endVideo(self) {
         playVideo(video)
     }
 }
-
 
 function imgBig() {
     var array = document.getElementsByClassName("item");
