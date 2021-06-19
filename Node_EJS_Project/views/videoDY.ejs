@@ -24,11 +24,11 @@
         <img src="views/images/circul.png" alt="整体循环播放" id="videoCircul" onclick="videoCircul()" />
     </div>
     <div class="buttons2">
+        <p class="iframe" onclick="switchSrc()">iframe换源</p>
         <p onclick="preVideo()">上一首</p>
         <p onclick="nextVideo()">下一首</p>
-        <p onclick="switchSrc()">iframe换源</p>
     </div>
-    <iframe id="iframe" src="http://127.0.0.1:8090/image?index=0"></iframe>
+    <iframe id="iframe" class="iframe" src="http://127.0.0.1:8090/image?index=0"></iframe>
     
     <!-- jQuery -->
     <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>

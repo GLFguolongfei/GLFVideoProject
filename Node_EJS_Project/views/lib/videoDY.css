@@ -44,10 +44,7 @@ iframe {
         bottom: 0;
         flex-direction: row !important;
     }
-    iframe {
-        display: none;
-    }
-    .buttons2 p:nth-child(3) {
+    .iframe {
         display: none;
     }
 }
