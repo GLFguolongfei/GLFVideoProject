@@ -11,7 +11,6 @@ var dataArray = [];
 var isCircul = false;
 var itemHeight = '60vh'
 
-
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 加载完成 */
 $(function () {
     currentIndex = getQueryString('index') || 0
@@ -38,7 +37,10 @@ $(function () {
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 方法 */
 function addMore(type = 1) {
     if (type == 2 && dataArray.length - currentIndex > 200) {
-        alert('视频太多，不建议一次性加载全部')
+        addMore()
+        setTimeout(function() {
+            alert('视频太多，不建议一次性加载全部')
+        }, 1000)
         return
     }
     if (currentIndex - initIndex > 200) {

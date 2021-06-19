@@ -38,7 +38,10 @@ $(function () {
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 方法 */
 function addMore(type = 1) {
     if (type == 2 && dataArray.length - currentIndex > 500) {
-        alert('图片太多，不建议一次性加载全部')
+        addMore()
+        setTimeout(function() {
+            alert('视频太多，不建议一次性加载全部')
+        }, 1000)
         return
     }
     if (currentIndex - initIndex > 500) {
