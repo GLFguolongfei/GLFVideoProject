@@ -97,6 +97,12 @@ http.createServer(function (req, res) {
 		}, function (err, data) {
 			res.end(data);
 		})
+	} else if (pathname == '/media') {
+		ejs.renderFile('views/media.ejs', {
+
+		}, function (err, data) {
+			res.end(data);
+		})
 	} else {
 		// var currentPath = req.url.substring(1, req.url.length);
 		var currentPath = "." + req.url;
