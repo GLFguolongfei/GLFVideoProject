@@ -23,7 +23,8 @@ $(function () {
         var src = ipUrl + ele.textContent;
         dataArray.push(src);
     }
-    if (currentIndex > array.length - 1) {
+    $('.info').remove()
+    if (currentIndex > dataArray.length - 1) {
         alert('下标已超出视频资源数量, 默认从0开始')
         currentIndex = 0
         initIndex = 0

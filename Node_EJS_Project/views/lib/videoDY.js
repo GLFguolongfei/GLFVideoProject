@@ -9,9 +9,6 @@ var isCircul = false;
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 加载完成 */
 $(function () {
-    currentIndex = getQueryString('index') || 0
-    currentIndex = parseInt(currentIndex)
-
     // 加载资源
     var array = document.getElementsByClassName("source");
     for (var i = 0; i < array.length; i++) {
@@ -19,6 +16,9 @@ $(function () {
         var src = ipUrl + ele.textContent;
         dataArray.push(src);
     }
+    $('.info').remove()
+
+    addNames()
     
     let videoSrc = dataArray[currentIndex]
     $('#video').attr('src', videoSrc)
@@ -29,6 +29,23 @@ $(function () {
 });
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 方法 */
+function addNames() {
+    let html = ''
+    for (let i = 0; i < dataArray.length; i++) {
+        let path = dataArray[i]
+        let array = path.split('/')
+        if (i == currentIndex) {
+            html += '<p id="nameSelect" onclick="select(' + i + ')">【' + (i + 1) + '】' + array[array.length - 1] + '</p>' 
+        } else {
+            html += '<p onclick="select(' + i + ')">【' + (i + 1) + '】' + array[array.length - 1] + '</p>' 
+        }
+    }
+    $('.name').html(html);
+
+    let currentEle = document.getElementById('nameSelect')
+    currentEle.scrollIntoViewIfNeeded()
+}
+
 function playVideo(self) {
     console.log('开始', self.id)
     var model = dataArray[currentIndex];
@@ -45,6 +62,7 @@ function endVideo(self) {
     console.log(currentIndex)
     let videoSrc = dataArray[currentIndex]
     $('#video').attr('src', videoSrc)
+    addNames()
 }
 
 function videoCircul() {
@@ -63,12 +81,21 @@ function preVideo() {
     currentIndex--
     let videoSrc = dataArray[currentIndex]
     $('#video').attr('src', videoSrc)
+    addNames()
 }
 
 function nextVideo() {
     currentIndex++
     let videoSrc = dataArray[currentIndex]
     $('#video').attr('src', videoSrc)
+    addNames()
+}
+
+function select(index) {
+    currentIndex = index
+    let videoSrc = dataArray[currentIndex]
+    $('#video').attr('src', videoSrc)
+    addNames()
 }
 
 function switchSrc() {
