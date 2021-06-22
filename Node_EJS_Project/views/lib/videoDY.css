@@ -32,6 +32,11 @@ body {
     font-size: 16px;
 }
 
+.name p {
+    font-size: 16px;
+    line-height: 28px;
+}
+
 #nameSelect {
     font-size: 20px;
     color: chocolate;
