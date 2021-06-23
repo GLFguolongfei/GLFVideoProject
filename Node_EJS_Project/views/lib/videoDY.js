@@ -5,7 +5,8 @@ var documentTitle = '视频'
 
 var currentIndex = 0; 
 var dataArray = [];
-var isCircul = false;
+var isCircul = false // 是否自动
+var isFullScreen = false // 是否全屏
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 加载完成 */
 $(function () {
@@ -26,6 +27,25 @@ $(function () {
     // 设置标题
     documentTitle = '视频(' + array.length + ')'
     document.title = documentTitle
+});
+
+$(document).keydown(function(event){
+    if (event.keyCode == 13) { // enter
+        console.log('你按下了Enter'); 
+    } else if (event.keyCode == 32) { // backspace
+        if (isFullScreen) {
+            $('#video').removeClass('videoFull')
+        } else {
+            $('#video').addClass('videoFull')
+        }
+        isFullScreen = !isFullScreen
+    } else if (event.keyCode == 38) { // arrow up
+        preVideo()
+    } else if (event.keyCode == 40) { // arrow down
+        nextVideo()
+    } else {
+        // alert(event.keyCode)
+    }
 });
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 方法 */
