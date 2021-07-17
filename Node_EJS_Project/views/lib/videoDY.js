@@ -19,16 +19,26 @@ $(function () {
     }
     $('.info').remove()
 
-    addNames()
-    
+    let title = window.localStorage.getItem('title')
+    dataArray.map((item, index) => {
+        var pathArray = item.split('/');
+        var name = pathArray[pathArray.length-1];
+        if (name == title) {
+            currentIndex = index
+        }
+    })
+
     let videoSrc = dataArray[currentIndex]
     $('#video').attr('src', videoSrc)
+
+    addNames()
 
     // 设置标题
     documentTitle = '视频(' + array.length + ')'
     document.title = documentTitle
 });
 
+// 监听键盘事件
 $(document).keydown(function(event){
     if (event.keyCode == 13) { // enter
         console.log('你按下了Enter'); 
@@ -74,6 +84,8 @@ function playVideo(self) {
     var title = name.split('.')[0];
     // 设置标题
     document.title =  (currentIndex + 1) + '/' + dataArray.length + '-' + title;
+    // 保存本地
+    window.localStorage.setItem('title', name)
 }
 
 function endVideo(self) {
@@ -119,16 +131,6 @@ function select(index) {
     let videoSrc = dataArray[currentIndex]
     $('#video').attr('src', videoSrc)
     addNames()
-}
-
-// 自动播放
-function switchSrc() {
-    let src = $('#iframe').attr('src')
-    if (src.indexOf('video') > -1) {
-        $('#iframe').attr('src', 'http://127.0.0.1:8090/image?index=0')
-    } else {
-        $('#iframe').attr('src', 'http://127.0.0.1:8090/video?index=0')
-    }
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 工具 */
