@@ -97,6 +97,7 @@ function videoCircul() {
     }
 }
 
+// 上一首
 function preVideo() {
     currentIndex--
     let videoSrc = dataArray[currentIndex]
@@ -104,6 +105,7 @@ function preVideo() {
     addNames()
 }
 
+// 下一首
 function nextVideo() {
     currentIndex++
     let videoSrc = dataArray[currentIndex]
@@ -111,6 +113,7 @@ function nextVideo() {
     addNames()
 }
 
+// 选择播放
 function select(index) {
     currentIndex = index
     let videoSrc = dataArray[currentIndex]
@@ -118,6 +121,7 @@ function select(index) {
     addNames()
 }
 
+// 自动播放
 function switchSrc() {
     let src = $('#iframe').attr('src')
     if (src.indexOf('video') > -1) {
