@@ -43,6 +43,8 @@ $(document).keydown(function(event){
     if (event.keyCode == 13) { // enter
         console.log('你按下了Enter'); 
     } else if (event.keyCode == 32) { // backspace
+        // video移除焦点,否则放大的同时会暂停播放
+        $('#video').blur();
         if (isFullScreen) {
             $('#video').removeClass('videoFull')
         } else {
