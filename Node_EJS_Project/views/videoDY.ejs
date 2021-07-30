@@ -11,24 +11,25 @@
     <link rel="stylesheet" type="text/css" href="views/lib/videoDY.css">
 </head>
 <body>
-    <div class="info">
+    <!-- 数据源 -->
+    <div class="data">
         <p class="sourceType"><%= sourceType %></p>
         <p class="ipUrl"><%= ipUrl %></p>
         <% for(var i = 0; i < list.length; i++) { %>
             <p class="source"><%= list[i] %></p>
-            <!-- <video src="http://127.0.0.1:8080<%= list[i] %>" controls onplay="playVideo(this)"></video> -->
         <% } %>
     </div>
+    <!-- 界面 -->
     <video id="video" autoplay controls loop onplay="playVideo(this)" onended="endVideo(this)"></video>
-    <div class="buttons">
-        <img src="views/images/circul.png" alt="整体循环播放" id="videoCircul" onclick="videoCircul()" />
-    </div>
-    <div class="buttons2">
+    <div id="operation">
         <p onclick="preVideo()">上一首</p>
         <p onclick="nextVideo()">下一首</p>
     </div>
-    <div class="name"></div>
-    
+    <div id="names"></div>
+    <div id="buttons">
+        <img src="views/images/circul.png" alt="整体循环播放" id="videoCircul" onclick="videoCircul()" />
+    </div>
+
     <!-- jQuery -->
     <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <!-- 圣诞雪花 -->

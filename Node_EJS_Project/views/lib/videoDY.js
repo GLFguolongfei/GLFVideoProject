@@ -70,7 +70,7 @@ function addNames() {
             html += '<p onclick="select(' + i + ')">【' + (i + 1) + '】' + array[array.length - 1] + '</p>' 
         }
     }
-    $('.name').html(html);
+    $('#names').html(html);
 
     let currentEle = document.getElementById('nameSelect')
     currentEle.scrollIntoViewIfNeeded()
