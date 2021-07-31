@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <title>介绍</title>
+
+    <!-- 自带 -->
+    <link rel="stylesheet" type="text/css" href="views/pages/index.css">
+</head>
+<body>
+    <div class="hidden">
+        <img src="views/images/bg1.jpeg" />
+        <img src="views/images/bg2.jpeg" />
+        <img src="views/images/bg3.jpeg" />
+        <img src="views/images/bg4.jpeg" />
+        <img src="views/images/bg5.jpeg" />
+        <img src="views/images/bg6.jpeg" />
+        <img src="views/images/bg7.jpeg" />
+        <img src="views/images/bg8.jpeg" />
+        <img src="views/images/bg9.jpeg" />
+    </div>
+	<div class="container">
+	    <p>本项目所用到的知识点</p>
+	    <p>1.Node.js</p>
+	    <p>2.Node.js的EJS模块引擎</p>
+	    <p>3.Node.js的http静态服务器</p>
+        <div class="btn">
+            <a href="http://127.0.0.1:8090/image?index=0">访问图片主页</a>
+            <a href="http://127.0.0.1:8090/video?index=0">访问视频主页</a>
+            <br /><br />
+            <a href="http://127.0.0.1:8090/videoDY">抖音视频</a>
+            <a href="http://127.0.0.1:8090/media">视频图片</a>
+        </div>
+	    <p>使用本地资源访问视频 , 请使用Chrome浏览器 , Safari浏览器有问题（原因未知）</p>
+	</div>
+
+    <!-- 看板娘 -->
+    <script src="https://eqcn.ajz.miesnfu.com/wp-content/plugins/wp-3d-pony/live2dw/lib/L2Dwidget.min.js"></script>
+    <script type="text/javascript">
+        L2Dwidget.init({
+            "model": {
+                "jsonPath": "https://unpkg.com/live2d-widget-model-shizuku@1.0.5/assets/shizuku.model.json",
+                // "jsonPath": "https://unpkg.com/live2d-widget-model-miku@1.0.5/assets/miku.model.json",
+                "scale": 1
+            },
+            "display": {
+                "position": "right",
+                "width": 100,
+                "height": 200,
+                "hOffset": 0,
+                "vOffset": -20
+            },
+            "mobile": {
+                "show": true,
+                "scale": 0.5
+            },
+            "react": {
+                "opacityDefault": 0.7,
+                "opacityOnHover": 0.2
+            }
+        });
+    </script>
+    <!-- 自带 -->
+    <script src="views/pages/index.js"></script>
+</body>
+</html>

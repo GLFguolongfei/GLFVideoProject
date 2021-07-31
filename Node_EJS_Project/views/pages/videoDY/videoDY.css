@@ -1,0 +1,118 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+}
+
+body {
+    background: white url('../../images/bg9.jpeg') no-repeat fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 80px;
+}
+
+.data {
+    display: none;
+}
+
+/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 分割线 */
+#video {
+    width: 50vw;
+    height: 100vh;
+    flex-shrink: 0;
+    background-color: transparent;
+}
+
+.videoFull {
+    width: 100vw !important;
+    height: 100vh !important;
+    position: fixed !important;
+    left: 0 !important;
+    top: 0 !important;
+    background-color: black !important;
+}
+
+#operation {
+    width: 200px;
+    padding-left: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+#operation p {
+    width: 160px;
+    height: 50px;
+    margin: 10px 0;
+    border-radius: 30px;
+    background-color: chocolate;
+    color: rgba(2555,255,255,0.8);
+    font-weight: bold;
+    text-align: center;
+    line-height: 50px;
+    font-size: 18px;
+}
+
+#names {
+    width: calc(50vw - 300px);
+    min-width: 250px;
+    height: 100vh;
+    padding: 20px 0px 20px 30px;
+    box-sizing: border-box;
+    overflow: auto;
+    color: rgba(2555,255,255,0.8);
+    font-size: 16px;
+}
+
+#names p {
+    font-size: 16px;
+    line-height: 28px;
+}
+
+#nameSelect {
+    font-size: 20px;
+    color: chocolate;
+    font-weight: bold;
+}
+
+#buttons {
+    width: 45px;
+    position: fixed;
+    left: 20px;
+    top: 23px;
+    z-index: 10;
+}
+
+#buttons img {
+    width: 45px;
+    height: 45px;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ @media */
+@media only screen and (max-width: 500px) {
+    body {
+        padding: 0px;
+        flex-direction: column;
+    }
+    #video {
+        width: 100vw;
+        height: 100vh;
+    }
+    .buttons2 {
+        width: 100%;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        flex-direction: row !important;
+        padding-left: 0px !important;
+    }
+    .buttons2 p {
+        margin: 15px !important;
+        padding: 10px 35px !important;
+    }
+}
+
+
