@@ -1,47 +1,39 @@
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 变量 */
-var sourceType = $('.sourceType').text();
-var ipUrl = $('.ipUrl').text();
-var documentTitle = '视频'
+/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 变量 */
+let sourceType = $('.sourceType').text();
+let ipUrl = $('.ipUrl').text();
 
-var currentIndex = 0; 
-var dataArray = [];
-var isCircul = false // 是否自动
-var isFullScreen = false // 是否全屏
+let currentIndex = 0;
+// 数据源
+let dataArray = [];
+// 其它
+let isCircul = false // 是否自动
+let isFullScreen = false // 是否全屏
 
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 加载完成 */
+/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 加载完成 */
 $(function () {
     // 加载资源
-    var array = document.getElementsByClassName("source");
-    for (var i = 0; i < array.length; i++) {
-        var ele = array[i];
-        var src = ipUrl + ele.textContent;
-        dataArray.push(src);
-    }
-    $('.info').remove()
-
+    getSourceData()
+    // 上次播放
     let title = window.localStorage.getItem('title')
     dataArray.map((item, index) => {
-        var pathArray = item.split('/');
-        var name = pathArray[pathArray.length-1];
+        let pathArray = item.split('/');
+        let name = pathArray[pathArray.length-1];
         if (name == title) {
             currentIndex = index
         }
     })
-
     let videoSrc = dataArray[currentIndex]
     $('#video').attr('src', videoSrc)
-
+    // 显示界面
     addNames()
-
     // 设置标题
-    documentTitle = '视频(' + array.length + ')'
-    document.title = documentTitle
+    document.title = '视频(' + array.length + ')'
 });
 
 // 监听键盘事件
 $(document).keydown(function(event){
     if (event.keyCode == 13) { // enter
-        console.log('你按下了Enter'); 
+        console.log('你按下了Enter');
     } else if (event.keyCode == 32) { // backspace
         // video移除焦点,否则放大的同时会暂停播放
         $('#video').blur();
@@ -60,16 +52,16 @@ $(document).keydown(function(event){
     }
 });
 
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 方法 */
+/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 方法 */
 function addNames() {
     let html = ''
     for (let i = 0; i < dataArray.length; i++) {
         let path = dataArray[i]
         let array = path.split('/')
         if (i == currentIndex) {
-            html += '<p id="nameSelect" onclick="select(' + i + ')">【' + (i + 1) + '】' + array[array.length - 1] + '</p>' 
+            html += '<p id="nameSelect" onclick="select(' + i + ')">【' + (i + 1) + '】' + array[array.length - 1] + '</p>'
         } else {
-            html += '<p onclick="select(' + i + ')">【' + (i + 1) + '】' + array[array.length - 1] + '</p>' 
+            html += '<p onclick="select(' + i + ')">【' + (i + 1) + '】' + array[array.length - 1] + '</p>'
         }
     }
     $('#names').html(html);
@@ -80,10 +72,10 @@ function addNames() {
 
 function playVideo(self) {
     console.log('开始', self.id)
-    var model = dataArray[currentIndex];
-    var pathArray = model.split('/');
-    var name = pathArray[pathArray.length-1];
-    var title = name.split('.')[0];
+    let model = dataArray[currentIndex];
+    let pathArray = model.split('/');
+    let name = pathArray[pathArray.length-1];
+    let title = name.split('.')[0];
     // 设置标题
     document.title =  (currentIndex + 1) + '/' + dataArray.length + '-' + title;
     // 保存本地
@@ -101,7 +93,7 @@ function endVideo(self) {
 
 function videoCircul() {
     isCircul = !isCircul;
-    var videoCircul = document.getElementById("videoCircul");
+    let videoCircul = document.getElementById("videoCircul");
     if (isCircul) {
         videoCircul.src = 'views/images/circulSelect.png'
         $('#video').attr('loop', null)
@@ -135,13 +127,15 @@ function select(index) {
     addNames()
 }
 
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 工具 */
-// 采用正则表达式获取地址栏参数
-// alert(getQueryString("password"));
-function getQueryString(name) {
-    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
-    var r = window.location.search.substr(1).match(reg);
-    if(r!=null)return  decodeURI(r[2]); return null;
+/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Tools */
+// 加载资源
+function getSourceData() {
+    let array = document.getElementsByClassName("source");
+    for (let i = 0; i < array.length; i++) {
+        let ele = array[i];
+        let src = ipUrl + ele.textContent;
+        dataArray.push(src);
+    }
+    $('#data').remove()
 }
-
 

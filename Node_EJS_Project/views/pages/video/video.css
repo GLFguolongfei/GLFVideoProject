@@ -60,7 +60,7 @@ body {
 #buttons {
     width: 45px;
     position: fixed;
-    right: 13px;
+    left: 13px;
     top: 23px;
     z-index: 10;
 }
@@ -68,6 +68,16 @@ body {
 #buttons img {
     width: 45px;
     height: 45px;
+}
+
+#buttons img:nth-child(3) {
+    width: 40px;
+    height: 40px;
+}
+
+#buttons img:nth-child(4) {
+    width: 48px;
+    height: 48px;
 }
 
 @media only screen and (max-width: 500px) {
