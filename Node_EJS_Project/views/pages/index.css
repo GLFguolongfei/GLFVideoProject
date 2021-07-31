@@ -2,8 +2,8 @@
 
 body {
     background: white url('../images/bgpng2.png') no-repeat fixed;
-    background-size: cover;
-    background-position: center;
+    background-size: cover !important;
+    background-position: center !important;
 }
 
 .container {
@@ -12,26 +12,25 @@ body {
     position: fixed;
     left: 25vw;
     top: 25vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.hidden {
+#data {
     display: none;
 }
 
-p {
-	color: cadetblue;
-    font-size: 18px;
-}
-
-.btn {
-    
-}
-
 a {
-    font-size: 20px;
-    font-weight: bold;
     color: lightseagreen;
-    margin-right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 48px;
+    font-family: fangsong;
+    /* 去掉下划线 */
+    text-decoration: none;
+    /* 文本阴影 */
+    text-shadow: 2px 2px 1px white;
 }
 
 
