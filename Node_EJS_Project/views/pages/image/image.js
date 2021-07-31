@@ -24,8 +24,8 @@ $(function () {
     // 显示界面
     if (currentIndex > dataArray.length - 1) {
         alert('下标已超出视频资源数量, 默认从0开始加载')
-        currentIndex = 0
         initIndex = 0
+        currentIndex = 0
     }
     addMore();
     // 设置标题

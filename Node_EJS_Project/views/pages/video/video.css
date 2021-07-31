@@ -9,11 +9,12 @@ body {
     background-size: cover;
 }
 
-.info {
+#data {
     display: none;
 }
 
-.container {
+/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 分割线 */
+#container {
     width: 100vw;
     height: 100vh;
     padding: 20px;
@@ -56,6 +57,19 @@ body {
     background-color: transparent;
 }
 
+#buttons {
+    width: 45px;
+    position: fixed;
+    right: 13px;
+    top: 23px;
+    z-index: 10;
+}
+
+#buttons img {
+    width: 45px;
+    height: 45px;
+}
+
 @media only screen and (max-width: 500px) {
     .container {
         padding: 10px;
@@ -68,17 +82,4 @@ body {
     }
 }
 
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ buttons */
-.buttons {
-    width: 45px;
-    position: fixed;
-    right: 13px;
-    top: 23px;
-    z-index: 10;
-}
-
-.buttons img {
-    width: 45px;
-    height: 45px;
-}
 
