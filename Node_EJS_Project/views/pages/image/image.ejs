@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
     <title>图片</title>
 
-
     <!-- 自带 -->
     <link rel="stylesheet" type="text/css" href="views/pages/image/image.css">
 </head>
 <body>
+    <!-- 数据源 -->
     <div id="data">
         <p class="sourceType"><%= sourceType %></p>
         <p class="ipUrl"><%= ipUrl %></p>
@@ -18,18 +18,20 @@
             <p class="source"><%= list[i] %></p>
         <% } %>
     </div>
-    <div class="container"></div>
-    <marquee class="marquee"></marquee>
-    <div class="buttons">
+    <!-- 界面 -->
+    <div id="container"></div>
+    <div id="buttons">
         <img src="views/images/imgBig.png" alt="放大" onclick="imgBig()" />
         <img src="views/images/imgSmall.png" alt="缩小" onclick="imgSmall()" />
     </div>
-    <div class="modal" onclick="handleModal()">
-        <div class="show"></div>
-        <img src="" alt="大图" id="showImg" />
-    </div>
     <audio id="audio" src="views/images/此生过半.mp3" loop controls="controls" onplay="playAudio()"
         onpause="pauseAudio()"></audio>
+    <!-- 弹框 -->
+    <div id="modal" onclick="handleModal()">
+        <img src="views/images/arrow-left.png" alt="上一张" onclick="preImg(event)" />
+        <img id="showImg" src="" alt="大图" />
+        <img src="views/images/arrow-right.png" alt="下一张" onclick="nextImg(event)" />
+    </div>
 
     <!-- jQuery -->
     <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>

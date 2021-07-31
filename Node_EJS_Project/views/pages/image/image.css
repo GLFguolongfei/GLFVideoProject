@@ -14,7 +14,7 @@ body {
 }
 
 /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 分割线 */
-.container {
+#container {
     width: 100vw;
     height: 100vh;
     padding: 20px;
@@ -48,6 +48,62 @@ body {
     background-color: transparent;
 }
 
+#buttons {
+    width: 45px;
+    position: fixed;
+    right: 13px;
+    top: 23px;
+    z-index: 10;
+}
+
+#buttons img {
+    width: 45px;
+    height: 45px;
+}
+
+#audio {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 弹框 */
+#modal {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+
+#modal img:nth-child(1) {
+    width: 200px;
+    height: 100vh;
+    padding: calc((100vh - 80px) / 2) 60px;
+    position: fixed;
+    left: 0px;
+    z-index: 101;
+}
+
+#modal img:nth-child(3) {
+    width: 200px;
+    height: 100vh;
+    padding: calc((100vh - 80px) / 2) 60px;
+    position: fixed;
+    right: 0px;
+    z-index: 101;
+}
+
+#showImg {
+    height: 100vh;
+}
+
 @media only screen and (max-width: 500px) {
     .container {
         padding: 10px;
@@ -61,64 +117,4 @@ body {
     .marqueeItem {
         width: auto !important;
     }
-}
-
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ marquee */
-.marquee {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-}
-
-.marqueeItem {
-    height: 30vh !important;
-}
-
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ buttons */
-.buttons {
-    width: 45px;
-    position: fixed;
-    right: 13px;
-    top: 23px;
-    z-index: 10;
-}
-
-.buttons img {
-    width: 45px;
-    height: 45px;
-}
-
-#audio {
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 10;
-}
-
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ modal */
-.modal {
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.show {
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: white;
-    opacity: 0.6;
-}
-
-#showImg {
-    height: 100vh;
-    position: relative;
-    z-index: 10;
 }

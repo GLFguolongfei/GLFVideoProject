@@ -1,0 +1,55 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    box-sizing: border-box;
+    font-family: Microsoft Yahei;
+}
+
+/* 解决页面使用 overflow: scroll 在iOS上滑动卡顿的问题 */
+body {
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* input 不显示边框  */
+input {
+    border-style: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+input:focus {
+    outline: none;
+}
+
+/* 文字超出显示... */
+.ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.color3 {
+    color: #333333 !important;
+}
+
+.color6 {
+    color: #666666 !important;
+}
+
+.color9 {
+    color: #999999 !important;
+}
+
+.bgColor {
+    color: #f2f2f2 !important;
+}
+
+.lineColor {
+    color: #eaeaea !important;
+}
+
+
+

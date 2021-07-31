@@ -1,53 +1,47 @@
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 变量 */
+/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 变量 */
 let sourceType = $('.sourceType').text();
 let ipUrl = $('.ipUrl').text();
-let documentTitle = '图片'
 
 let initIndex = 0;
 let currentIndex = 0;
-let pageSize = 30;
+// 数据源
 let dataArray = [];
-let currentEle = "";
-let timer; // 圣诞雪花计时器
+let pageSize = 30;
+// 圣诞雪花计时器
+let timer;
+// 其它
 let itemHeight = '60vh'
+let modalIndex = 0;
 
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 加载完成 */
+/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 加载完成 */
 $(function () {
-    $('.modal').hide()
-    currentIndex = getQueryString('index') || 0
-    currentIndex = parseInt(currentIndex)
-    initIndex = parseInt(currentIndex)
+    $('#modal').hide()
+    let index = getQueryString('index') || 0
+    initIndex = parseInt(index)
+    currentIndex = parseInt(index)
     // 加载资源
-    let array = document.getElementsByClassName("source");
-    for (let i = 0; i < array.length; i++) {
-        let ele = array[i];
-        let src = ipUrl + ele.textContent;
-        dataArray.push(src);
-    }
-    $('.info').remove()
+    getSourceData()
+    // 显示界面
     if (currentIndex > dataArray.length - 1) {
-        alert('下标已超出视频资源数量, 默认从0开始')
+        alert('下标已超出视频资源数量, 默认从0开始加载')
         currentIndex = 0
         initIndex = 0
     }
     addMore();
     // 设置标题
-    documentTitle = '图片(' + array.length + ')'
-    document.title = documentTitle
+    document.title = '图片(' + dataArray.length + ')'
 });
 
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 方法 */
+/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 方法 */
+// type 1加载下一页 2加载全部
 function addMore(type = 1) {
     if (type == 2 && dataArray.length - currentIndex > 200) {
+        alert('图片太多, 不建议一次性加载全部')
         addMore()
-        setTimeout(function() {
-            alert('图片太多，不建议一次性加载全部')
-        }, 1000)
         return
     }
     if (currentIndex - initIndex > 500) {
         let url = window.location.origin + window.location.pathname + '?index=' + currentIndex
-        // window.location.replace(url)
         window.location.href = url
         return
     }
@@ -57,57 +51,53 @@ function addMore(type = 1) {
         currentIndex += pageSize;
         if (dataArray.length < currentIndex) {
             for (let i = currentIndex-pageSize; i < dataArray.length; i++) {
-                html += '<img class="item" style="height:' + itemHeight + '" src="' + dataArray[i] + '" onclick="itemClick(this)" />';
+                html += '<img class="item" style="height:' + itemHeight
+                    + '" src="' + dataArray[i]
+                    + '" onclick="itemClick(this, ' + i + ')" />';
             }
         } else {
             for (let i = currentIndex-pageSize; i < currentIndex; i++) {
-                html += '<img class="item" style="height:' + itemHeight + '" src="' + dataArray[i] + '" onclick="itemClick(this)" />';
+                html += '<img class="item" style="height:' + itemHeight
+                    + '" src="' + dataArray[i]
+                    + '" onclick="itemClick(this, ' + i + ')" />';
             }
             html += '<div class="addMore">'
-            html += '<button onclick="addMore(1)">点击加载更多......</button>';
-            html += '<button onclick="addMore(2)">点击加载全部......</button>';
+            html += '<button onclick="addMore(1)">加载更多...</button>';
+            html += '<button onclick="addMore(2)">加载全部...</button>';
             html += '</div>'
         }
     } else {
         for (let i = currentIndex; i < dataArray.length; i++) {
-            html += '<img class="item" style="height:' + itemHeight + '" src="' + dataArray[i] + '" onclick="itemClick(this)" />';
+            html += '<img class="item" style="height:' + itemHeight
+                + '" src="' + dataArray[i]
+                + '" onclick="itemClick(this, ' + i + ')" />';
         }
         currentIndex = dataArray.length - 1
     }
-    $(".container").append(html);
+    $("#container").append(html);
 }
 
 function playAudio() {
     timer = snowFlow({
-        num: $(window).width() / 35,
+        num: screenW / 35,
         text: "❄"
     });
     $(".snow").show()
-
-    let html = '';
-    for (let i = 0; i < dataArray.length; i++) {
-        html += '<img class="item marqueeItem" style="height:' + itemHeight + '" src="' + dataArray[i] + '" onclick="itemClick(this)" />';
-    }
-    $(".marquee").append(html);
 }
 
 function pauseAudio() {
     clearInterval(timer)
     $(".snow").hide()
-    $(".marqueeItem").remove();
 }
 
-function itemClick(self) {
+function itemClick(self, index) {
+    modalIndex = index
     $('#showImg').attr('src', self.src)
-    if (currentEle == self) {
-        $('.modal').hide()
-    } else {
-        $('.modal').show()
-    }
+    $('#modal').show()
 }
 
 function handleModal() {
-    $('.modal').hide()
+    $('#modal').hide()
 }
 
 function imgBig() {
@@ -136,5 +126,37 @@ function imgSmall() {
     }
 }
 
+// 上一张
+function preImg(event) {
+    event.stopPropagation()
+    modalIndex--
+    if (modalIndex < 0) {
+        modalIndex = dataArray.length - 1
+    }
+    let src = dataArray[modalIndex]
+    $('#showImg').attr('src', src)
+}
 
+// 下一张
+function nextImg(event) {
+    event.stopPropagation()
+    modalIndex++
+    if (modalIndex >= dataArray.length) {
+        modalIndex = 0
+    }
+    let src = dataArray[modalIndex]
+    $('#showImg').attr('src', src)
+}
+
+/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Tools */
+// 加载资源
+function getSourceData() {
+    let array = document.getElementsByClassName("source");
+    for (let i = 0; i < array.length; i++) {
+        let ele = array[i];
+        let src = ipUrl + ele.textContent;
+        dataArray.push(src);
+    }
+    $('#data').remove()
+}
 
