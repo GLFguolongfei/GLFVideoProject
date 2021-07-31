@@ -14,14 +14,5 @@ body {
 .iframe {
     width: 50vw;
     height: 100vh;
-    border-right: 2px solid white;
-}
-
-#iframe1 {
-    border-right: 10px solid white;
-}
-
-#iframe12 {
-    border-left: 10px solid white;
 }
 
