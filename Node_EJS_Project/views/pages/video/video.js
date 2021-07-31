@@ -74,7 +74,7 @@ function playVideo(self) {
         if (video == self) {
             video.play();
             video.classList.add("itemCurrent")
-            scrollToCurrent(self);
+            scrollToCurrent();
 
             // 设置标题
             let model = dataArray[i];
@@ -156,12 +156,10 @@ function getSourceData() {
 }
 
 // 滚动到当前位置
-function scrollToCurrent(ele) {
-    if (ele) {
-        let hhhh = $("#container").scrollTop() + $(ele).offset().top - $("#container").offset().top;
-        hhhh -= 20;
-        $("#container").animate({ scrollTop:  hhhh}, 300);
-    } else {
-        alert("当前没有正在播放的视频");
+function scrollToCurrent() {
+    let array = document.getElementsByClassName('itemCurrent') || []
+    if (array.length > 0) {
+        let ele = array[0]
+        ele.scrollIntoViewIfNeeded();
     }
 }

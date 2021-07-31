@@ -139,3 +139,10 @@ function getSourceData() {
     $('#data').remove()
 }
 
+// 滚动到当前位置
+function scrollToCurrent() {
+    let ele = document.getElementById('nameSelect')
+    if (ele) {
+        ele.scrollIntoViewIfNeeded();
+    }
+}
