@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
     <title>图片</title>
 
+
     <!-- 自带 -->
     <link rel="stylesheet" type="text/css" href="views/pages/image/image.css">
 </head>
 <body>
-    <div class="info">
+    <div id="data">
         <p class="sourceType"><%= sourceType %></p>
         <p class="ipUrl"><%= ipUrl %></p>
-        <% for(var i=0; i < list.length; i++) { %>
+        <% for(var i = 0; i < list.length; i++) { %>
             <p class="source"><%= list[i] %></p>
-            <!-- <img src="http://127.0.0.1:8080<%= list[i] %>" /> -->
         <% } %>
     </div>
     <div class="container"></div>
@@ -35,6 +35,9 @@
     <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <!-- 圣诞雪花 -->
     <script src="views/lib/snow/snow.js"></script>
+    <!-- common -->
+    <link rel="stylesheet" href="views/lib/common/common.css">
+    <script type="text/javascript" src="views/lib/common/common.js"></script>
     <!-- 自带 -->
     <script src="views/pages/image/image.js"></script>
 </body>

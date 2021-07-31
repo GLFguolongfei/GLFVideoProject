@@ -1,47 +1,42 @@
 /** Official */
-var fs = require("fs")
-var http = require('http');
-var url = require('url');
-var path = require("path")
+let fs = require("fs")
+let http = require('http');
+let url = require('url');
+let path = require("path")
 /** Vendor */
-var urlencode = require('urlencode');
-var ejs = require('ejs');
-var axios = require("axios")
+let urlencode = require('urlencode');
+let ejs = require('ejs');
 /** Custom */
-var mimeModul = require('./getmime.js');
-var {sourceType, rootPath, ipUrl} = require('./project.config.js')
+let mimeModul = require('./getmime.js');
+let {sourceType, rootPath, ipUrl} = require('./project.config.js')
 
-var imageArray = []
-var videoArray = []
-var robotArray = []
+let imageArray = []
+let videoArray = []
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 遍历数据 */
 // 使用异步获取路径
-// 参数是遍历文件的根路径
 function readDirSync(filePath) {
-    // fs.readdirSync(path[, options])
     // 读取目录的内容
-    var pa = fs.readdirSync(filePath);
+    let pa = fs.readdirSync(filePath);
     pa.forEach(function (ele, index) {
-        var subFilePath = filePath + '/' + ele;
-        // fs.statSync(path[, options])
         // 查看文件的属性
-        var info = fs.statSync(subFilePath)
+        let subFilePath = filePath + '/' + ele;
+        let info = fs.statSync(subFilePath)
         if (info.isDirectory()) {
             readDirSync(subFilePath);
         } else {
-            // 找到 .png .jpg .jpeg .jif 文件
-            let fileNameReg1 = /\.png|\.jpg|\.jpeg|\.jif/g;
-            let shouldFormat1 = fileNameReg1.test(subFilePath.toLowerCase());
-            if (shouldFormat1) {
-                var str = subFilePath.substring(rootPath.length, subFilePath.length);
+            // 图片（.png .jpg .jpeg .jif）
+            let imgReg = /\.png|\.jpg|\.jpeg|\.jif/g;
+            let imgFormat = imgReg.test(subFilePath.toLowerCase());
+            if (imgFormat) {
+                let str = subFilePath.substring(rootPath.length, subFilePath.length);
                 imageArray.push(str);
             }
-            // 找到 .mp4 .rmvb .mkv 文件
-            let fileNameReg2 = /\.mp4|\.rmvb|\.mkv|\.mov/g;
-            let shouldFormat2 = fileNameReg2.test(subFilePath.toLowerCase());
-            if (shouldFormat2) {
-                var str = subFilePath.substring(rootPath.length, subFilePath.length);
+            // 视频（.mp4 .rmvb .mkv）
+            let videoReg = /\.mp4|\.rmvb|\.mkv|\.mov/g;
+            let videoFormat = videoReg.test(subFilePath.toLowerCase());
+            if (videoFormat) {
+                let str = subFilePath.substring(rootPath.length, subFilePath.length);
                 videoArray.push(str);
             }
         }
@@ -53,18 +48,19 @@ function bianLi() {
     imageArray = [];
     videoArray = [];
     readDirSync(rootPath)
-    // console.log("资源路径: " + rootPath);
-    // console.log("图片个数: " + imageArray.length);
-    // console.log("视频个数: " + videoArray.length);
+    console.log("资源路径: " + rootPath);
+    console.log("图片个数: " + imageArray.length);
+    console.log("视频个数: " + videoArray.length);
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 起服务 */
 http.createServer(function (req, res) {
-    console.log('~~~~~~~~~ req.url = ', req.url)
+    // console.log('~~~~~~~~~ req.url = ', req.url)
 
-    res.writeHead(200, {"Content-Type": "text/html;charset='utf-8'"});
-    var pathname = url.parse(req.url, true).pathname;
-    var method = req.method.toLowerCase();
+    res.writeHead(200, {"Content-Type": "text/html; charset='utf-8'"});
+    let pathname = url.parse(req.url, true).pathname;
+    let method = req.method.toLowerCase();
+
     if (pathname == "/") {
         ejs.renderFile('views/pages/index.ejs', {}, function (err, data) {
             res.end(data);
@@ -101,17 +97,15 @@ http.createServer(function (req, res) {
             res.end(data);
         })
     } else {
-        // var currentPath = req.url.substring(1, req.url.length);
-        var currentPath = "." + req.url;
+        let currentPath = "." + req.url;
         currentPath = urlencode.decode(currentPath);
-        // console.log('currentPath', req.url, currentPath);
         fs.readFile(currentPath, function (error, data) {
             if (error) {
                 console.log(error);
             } else {
-                var extname = path.extname(currentPath)
-                var mime = mimeModul.getMime(extname);
-                var header = {
+                let extname = path.extname(currentPath)
+                let mime = mimeModul.getMime(extname);
+                let header = {
                     "Content-Type": "" + mime + "; charset='utf-8'",
                     // "Content-Range": 'bytes 0-' + (data.length - 1) + '/' + data.length,
                     // "Content-Length": data.length,

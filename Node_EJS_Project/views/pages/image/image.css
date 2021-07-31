@@ -9,10 +9,11 @@ body {
     background-size: cover;
 }
 
-.info {
+#data {
     display: none;
 }
 
+/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 分割线 */
 .container {
     width: 100vw;
     height: 100vh;
