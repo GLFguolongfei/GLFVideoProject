@@ -82,7 +82,7 @@ body {
     background-color: black;
 }
 
-#modal img:nth-child(1) {
+#preImg {
     width: 200px;
     height: 100vh;
     padding: calc((100vh - 80px) / 2) 60px;
@@ -91,13 +91,18 @@ body {
     z-index: 101;
 }
 
-#modal img:nth-child(3) {
+#nextImg {
     width: 200px;
     height: 100vh;
     padding: calc((100vh - 80px) / 2) 60px;
     position: fixed;
     right: 0px;
     z-index: 101;
+}
+
+#preImg:hover, #nextImg:hover {
+    background-color: black;
+    filter: contrast(0.5);
 }
 
 #showImg {
