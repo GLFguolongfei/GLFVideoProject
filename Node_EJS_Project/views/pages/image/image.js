@@ -32,6 +32,21 @@ $(function () {
     document.title = '图片(' + dataArray.length + ')'
 });
 
+// 监听键盘事件
+$(document).keydown(function(event){
+    if (event.keyCode == 13) { // enter
+
+    } else if (event.keyCode == 32) { // backspace
+        this.handleModal()
+    } else if (event.keyCode == 37 || event.keyCode == 38 ) { // arrow up
+        preImg()
+    } else if (event.keyCode == 39 || event.keyCode == 40) { // arrow down
+        nextImg()
+    } else {
+        // alert(event.keyCode)
+    }
+});
+
 /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 方法 */
 // type 1加载下一页 2加载全部
 function addMore(type = 1) {
@@ -128,7 +143,7 @@ function imgSmall() {
 
 // 上一张
 function preImg(event) {
-    event.stopPropagation()
+    event && event.stopPropagation()
     modalIndex--
     if (modalIndex < 0) {
         modalIndex = dataArray.length - 1
@@ -139,7 +154,7 @@ function preImg(event) {
 
 // 下一张
 function nextImg(event) {
-    event.stopPropagation()
+    event && event.stopPropagation()
     modalIndex++
     if (modalIndex >= dataArray.length) {
         modalIndex = 0
