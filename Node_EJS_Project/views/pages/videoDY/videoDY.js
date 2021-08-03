@@ -27,13 +27,19 @@ $(function () {
     // 显示界面
     addNames()
     // 设置标题
-    document.title = '视频(' + array.length + ')'
+    document.title = '视频(' + dataArray.length + ')'
 });
 
 // 监听键盘事件
 $(document).keydown(function(event){
     if (event.keyCode == 13) { // enter
-        console.log('你按下了Enter');
+        // 全屏
+        if (document.fullscreen) {
+            document.cancelFullScreen && document.cancelFullScreen()
+            document.webkitCancelFullScreen && document.webkitCancelFullScreen()
+        } else {
+            document.documentElement.requestFullscreen();
+        }
     } else if (event.keyCode == 32) { // backspace
         // video移除焦点,否则放大的同时会暂停播放
         $('#video').blur();
