@@ -31,6 +31,12 @@ body {
     border: 2px solid transparent
 }
 
+.item:hover {
+    box-shadow: -7px 10px 10px white; /* 阴影 */
+    /*filter: drop-shadow(7px 10px 10px white); !* 阴影 *!*/
+    /*filter: none;*/
+}
+
 .itemCurrent {
     height: 65vh;
     margin: 0 5px 5px;
