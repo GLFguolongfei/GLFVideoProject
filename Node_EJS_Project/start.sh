@@ -53,7 +53,7 @@ then
     then
         echo '自定义路径'
 
-        # 把路径中的"/"替换为":"
+        # 把路径中的"/"替换为"\/"
         ppp=${sourcePath//\//\\/}
         echo $ppp
 
