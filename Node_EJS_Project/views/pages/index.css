@@ -8,10 +8,10 @@ body {
 
 .container {
 	width: 35vw;
-    height: 35vh;
+    height: 50vh;
     position: fixed;
     left: 32.5vw;
-    top: 32.5vh;
+    top: 25vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -22,12 +22,13 @@ body {
 }
 
 a {
-    padding: 0 15px;
+    padding: 2px 15px 5px;
     border-radius: 5px;
+    height: 63px;
     color: lightseagreen;
     font-size: 24px;
     font-weight: bold;
-    line-height: 48px;
+    line-height: 28px;
     font-family: fangsong;
     /* 去掉下划线 */
     text-decoration: none;
@@ -37,6 +38,12 @@ a {
 
 a:hover {
     background-color: rgba(255, 255, 255, 0.3);
+}
+
+a:hover::after {
+    /*content: '-->>';*/
+    content: "(" attr(href) ")";
+    display: block;
 }
 
 
