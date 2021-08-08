@@ -34,15 +34,7 @@ $(function () {
 
 // 监听键盘事件
 $(document).keydown(function(event){
-    if (event.keyCode == 13) { // enter
-        // 全屏
-        if (document.fullscreen) {
-            document.cancelFullScreen && document.cancelFullScreen()
-            document.webkitCancelFullScreen && document.webkitCancelFullScreen()
-        } else {
-            document.documentElement.requestFullscreen();
-        }
-    } else if (event.keyCode == 32) { // backspace
+    if (event.keyCode == 32) { // backspace
         this.handleModal()
     } else if (event.keyCode == 37 || event.keyCode == 38 ) { // arrow up
         preImg()

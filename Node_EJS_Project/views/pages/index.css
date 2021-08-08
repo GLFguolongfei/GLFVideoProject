@@ -7,11 +7,11 @@ body {
 }
 
 .container {
-	width: 50vw;
-    height: 50vh;
+	width: 35vw;
+    height: 35vh;
     position: fixed;
-    left: 25vw;
-    top: 25vh;
+    left: 32.5vw;
+    top: 32.5vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -22,6 +22,8 @@ body {
 }
 
 a {
+    padding: 0 15px;
+    border-radius: 5px;
     color: lightseagreen;
     font-size: 24px;
     font-weight: bold;
@@ -31,6 +33,10 @@ a {
     text-decoration: none;
     /* 文本阴影 */
     text-shadow: 2px 2px 1px white;
+}
+
+a:hover {
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
 
