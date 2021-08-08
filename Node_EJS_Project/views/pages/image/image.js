@@ -53,7 +53,7 @@ function addMore(type = 1) {
         addMore()
         return
     }
-    if (currentIndex - initIndex > 500) {
+    if (currentIndex - initIndex > 300) {
         let url = window.location.origin + window.location.pathname + '?index=' + currentIndex
         window.location.href = url
         return
