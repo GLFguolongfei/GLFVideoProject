@@ -61,7 +61,7 @@ body {
     width: calc(50vw - 300px);
     min-width: 250px;
     height: 100vh;
-    padding: 20px 0px 20px 30px;
+    padding: 0 5px 0 30px;
     box-sizing: border-box;
     overflow: auto;
     color: rgba(2555,255,255,0.8);
@@ -69,14 +69,24 @@ body {
 }
 
 #names p {
+    border-radius: 3px;
     font-size: 16px;
     line-height: 28px;
+}
+
+#names p:hover {
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
 #nameSelect {
     font-size: 20px;
     color: chocolate;
     font-weight: bold;
+    /* 吸顶 */
+    position: -webkit-sticky; /* safari 浏览器 */
+    position: sticky; /* 其它浏览器 */
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.9);
 }
 
 #buttons {
