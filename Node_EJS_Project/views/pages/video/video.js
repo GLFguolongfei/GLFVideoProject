@@ -6,7 +6,7 @@ let initIndex = 0;
 let currentIndex = 0;
 // 数据源
 let dataArray = [];
-let pageSize = 15;
+let pageSize = 20;
 // 其它
 let itemHeight = '60vh'
 let isCircul = false;
