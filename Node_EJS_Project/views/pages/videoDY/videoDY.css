@@ -74,10 +74,6 @@ body {
     line-height: 28px;
 }
 
-#names p:hover {
-    background-color: rgba(255, 255, 255, 0.3);
-}
-
 #nameSelect {
     font-size: 20px;
     color: chocolate;
