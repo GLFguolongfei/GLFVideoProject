@@ -6,7 +6,7 @@ let initIndex = 0;
 let currentIndex = 0;
 // 数据源
 let dataArray = [];
-let pageSize = 30;
+let pageSize = 15;
 // 圣诞雪花计时器
 let timer;
 // 其它
@@ -15,7 +15,6 @@ let modalIndex = 0;
 
 /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 加载完成 */
 $(function () {
-    $('#modal').hide()
     let index = getQueryString('index') || 0
     initIndex = parseInt(index)
     currentIndex = parseInt(index)
@@ -48,12 +47,12 @@ $(document).keydown(function(event){
 /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 方法 */
 // type 1加载下一页 2加载全部
 function addMore(type = 1) {
-    if (type == 2 && dataArray.length - currentIndex > 200) {
+    if (type == 2 && dataArray.length - currentIndex > 150) {
         alert('图片太多, 不建议一次性加载全部')
         addMore()
         return
     }
-    if (currentIndex - initIndex > 300) {
+    if (currentIndex - initIndex >= 150) {
         let url = window.location.origin + window.location.pathname + '?index=' + currentIndex
         window.location.href = url
         return
@@ -106,6 +105,7 @@ function pauseAudio() {
 function itemClick(self, index) {
     modalIndex = index
     $('#showImg').attr('src', self.src)
+    $('#modalShow').css('background-image', `url('${self.src}')`)
     $('#modal').show()
 }
 
@@ -117,9 +117,9 @@ function imgBig() {
     let array = document.getElementsByClassName("item");
     for (let i = 0; i < array.length; i++) {
         let img = array[i];
-        let heightStr = img.style.height || '65vh'
-        let height = parseInt(heightStr.substr(0, 2))
-        if (height + 10 < 100) {
+        let heightStr = img.style.height || itemHeight
+        let height = parseInt(heightStr)
+        if (height + 10 <= 100) {
             itemHeight = height + 10 + 'vh'
             img.style.height = itemHeight
         }
@@ -130,9 +130,9 @@ function imgSmall() {
     let array = document.getElementsByClassName("item");
     for (let i = 0; i < array.length; i++) {
         let img = array[i];
-        let heightStr = img.style.height || '65vh'
-        let height = parseInt(heightStr.substr(0, 2))
-        if (height - 10 > 10) {
+        let heightStr = img.style.height || itemHeight
+        let height = parseInt(heightStr)
+        if (height - 10 >= 10) {
             itemHeight = height - 10 + 'vh'
             img.style.height = itemHeight
         }
@@ -148,6 +148,7 @@ function preImg(event) {
     }
     let src = dataArray[modalIndex]
     $('#showImg').attr('src', src)
+    $('#modalShow').css('background-image', `url('${src}')`)
 }
 
 // 下一张
@@ -159,6 +160,7 @@ function nextImg(event) {
     }
     let src = dataArray[modalIndex]
     $('#showImg').attr('src', src)
+    $('#modalShow').css('background-image', `url('${src}')`)
 }
 
 /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Tools */

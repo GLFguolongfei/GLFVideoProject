@@ -27,10 +27,13 @@
     <audio id="audio" src="views/images/此生过半.mp3" loop controls="controls" onplay="playAudio()"
         onpause="pauseAudio()"></audio>
     <!-- 弹框 -->
-    <div id="modal" onclick="handleModal()">
-        <img id="preImg" src="views/images/arrow-left.png" alt="上一张" onclick="preImg(event)" />
-        <img id="showImg" src="" alt="大图" />
-        <img id="nextImg" src="views/images/arrow-right.png" alt="下一张" onclick="nextImg(event)" />
+    <div id="modal">
+        <div id="modalShow"></div>
+        <div id="modalContent" onclick="handleModal()">
+            <img id="preImg" src="views/images/arrow-left.png" alt="上一张" onclick="preImg(event)" />
+            <img id="showImg" src="" alt="大图" />
+            <img id="nextImg" src="views/images/arrow-right.png" alt="下一张" onclick="nextImg(event)" />
+        </div>
     </div>
 
     <!-- jQuery -->

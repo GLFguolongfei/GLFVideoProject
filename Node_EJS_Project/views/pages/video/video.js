@@ -6,7 +6,7 @@ let initIndex = 0;
 let currentIndex = 0;
 // 数据源
 let dataArray = [];
-let pageSize = 20;
+let pageSize = 15;
 // 其它
 let itemHeight = '60vh'
 let isCircul = false;
@@ -31,12 +31,12 @@ $(function () {
 
 /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 方法 */
 function addMore(type = 1) {
-    if (type == 2 && dataArray.length - currentIndex > 200) {
+    if (type == 2 && dataArray.length - currentIndex > 150) {
         alert('视频太多，不建议一次性加载全部')
         addMore()
         return
     }
-    if (currentIndex - initIndex > 200) {
+    if (currentIndex - initIndex >= 150) {
         let url = window.location.origin + window.location.pathname + '?index=' + currentIndex
         window.location.href = url
         return
