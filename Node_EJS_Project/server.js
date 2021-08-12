@@ -96,6 +96,10 @@ http.createServer(function (req, res) {
         ejs.renderFile('views/pages/media/media.ejs', {}, function (err, data) {
             res.end(data);
         })
+    } else if (pathname == '/setting') {
+        ejs.renderFile('views/pages/setting/index.ejs', {}, function (err, data) {
+            res.end(data);
+        })
     } else {
         let currentPath = "." + req.url;
         currentPath = urlencode.decode(currentPath);

@@ -13,6 +13,8 @@ let timer;
 let itemHeight = '60vh'
 let modalIndex = 0;
 
+let isShowImageBlur = window.localStorage.getItem('isShowImageBlur')
+
 /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 加载完成 */
 $(function () {
     let index = getQueryString('index') || 0
@@ -105,7 +107,10 @@ function pauseAudio() {
 function itemClick(self, index) {
     modalIndex = index
     $('#showImg').attr('src', self.src)
-    $('#modalShow').css('background-image', `url('${self.src}')`)
+    if (isShowImageBlur == 'true') {
+        $('#modalShow').css('background-image', `url('${self.src}')`)
+        $('#modalShow').css('filter', 'blur(8px)')
+    }
     $('#modal').show()
 }
 
@@ -148,7 +153,9 @@ function preImg(event) {
     }
     let src = dataArray[modalIndex]
     $('#showImg').attr('src', src)
-    $('#modalShow').css('background-image', `url('${src}')`)
+    if (isShowImageBlur == 'true') {
+        $('#modalShow').css('background-image', `url('${src}')`)
+    }
 }
 
 // 下一张
@@ -160,7 +167,9 @@ function nextImg(event) {
     }
     let src = dataArray[modalIndex]
     $('#showImg').attr('src', src)
-    $('#modalShow').css('background-image', `url('${src}')`)
+    if (isShowImageBlur == 'true') {
+        $('#modalShow').css('background-image', `url('${src}')`)
+    }
 }
 
 /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Tools */
