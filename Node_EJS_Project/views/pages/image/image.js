@@ -32,9 +32,7 @@ $(function () {
 
 // 监听键盘事件
 $(document).keydown(function(event){
-    if (event.keyCode == 32) { // backspace
-        this.hiddenModal()
-    } else if (event.keyCode == 37 || event.keyCode == 38 ) { // arrow up
+    if (event.keyCode == 37 || event.keyCode == 38 ) { // arrow up
         preImg()
     } else if (event.keyCode == 39 || event.keyCode == 40) { // arrow down
         nextImg()

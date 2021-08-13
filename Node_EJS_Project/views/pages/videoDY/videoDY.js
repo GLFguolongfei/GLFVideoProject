@@ -41,8 +41,6 @@ $(document).keydown(function(event){
         preVideo()
     } else if (event.keyCode == 39 || event.keyCode == 40) { // arrow down
         nextVideo()
-    } else {
-        // alert(event.keyCode)
     }
 });
 
