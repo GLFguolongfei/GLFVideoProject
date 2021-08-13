@@ -3,16 +3,12 @@ let sourceType = $('.sourceType').text();
 let ipUrl = $('.ipUrl').text();
 
 let currentIndex = 0;
-// 数据源
-let dataArray = [];
 // 其它
 let isCircul = false // 是否自动
 let isFullScreen = false // 是否全屏
 
 /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 加载完成 */
 $(function () {
-    // 加载资源
-    getSourceData()
     // 上次播放
     let title = window.localStorage.getItem('title')
     dataArray.map((item, index) => {
@@ -126,17 +122,6 @@ function select(index) {
 }
 
 /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Tools */
-// 加载资源
-function getSourceData() {
-    let array = document.getElementsByClassName("source");
-    for (let i = 0; i < array.length; i++) {
-        let ele = array[i];
-        let src = ipUrl + ele.textContent;
-        dataArray.push(src);
-    }
-    $('#data').remove()
-}
-
 // 滚动到当前位置
 function scrollToCurrent() {
     let ele = document.getElementById('nameSelect')

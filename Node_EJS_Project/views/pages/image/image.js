@@ -4,8 +4,7 @@ let ipUrl = $('.ipUrl').text();
 
 let initIndex = 0;
 let currentIndex = 0;
-// 数据源
-let dataArray = [];
+// 分页加载
 let pageSize = 15;
 // 圣诞雪花计时器
 let timer;
@@ -20,8 +19,6 @@ $(function () {
     let index = getQueryString('index') || 0
     initIndex = parseInt(index)
     currentIndex = parseInt(index)
-    // 加载资源
-    getSourceData()
     // 显示界面
     if (currentIndex > dataArray.length - 1) {
         alert('下标已超出视频资源数量, 默认从0开始加载')
@@ -36,13 +33,11 @@ $(function () {
 // 监听键盘事件
 $(document).keydown(function(event){
     if (event.keyCode == 32) { // backspace
-        this.handleModal()
+        this.hiddenModal()
     } else if (event.keyCode == 37 || event.keyCode == 38 ) { // arrow up
         preImg()
     } else if (event.keyCode == 39 || event.keyCode == 40) { // arrow down
         nextImg()
-    } else {
-        // alert(event.keyCode)
     }
 });
 
@@ -114,7 +109,7 @@ function itemClick(self, index) {
     $('#modal').show()
 }
 
-function handleModal() {
+function hiddenModal() {
     $('#modal').hide()
 }
 
@@ -170,17 +165,5 @@ function nextImg(event) {
     if (isShowImageBlur == 'true') {
         $('#modalShow').css('background-image', `url('${src}')`)
     }
-}
-
-/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Tools */
-// 加载资源
-function getSourceData() {
-    let array = document.getElementsByClassName("source");
-    for (let i = 0; i < array.length; i++) {
-        let ele = array[i];
-        let src = ipUrl + ele.textContent;
-        dataArray.push(src);
-    }
-    $('#data').remove()
 }
 

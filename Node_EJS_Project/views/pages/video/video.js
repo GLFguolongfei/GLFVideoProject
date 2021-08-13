@@ -4,8 +4,7 @@ let ipUrl = $('.ipUrl').text();
 
 let initIndex = 0;
 let currentIndex = 0;
-// 数据源
-let dataArray = [];
+// 分页加载
 let pageSize = 15;
 // 其它
 let itemHeight = '60vh'
@@ -16,8 +15,6 @@ $(function () {
     let index = getQueryString('index') || 0
     currentIndex = parseInt(index)
     initIndex = parseInt(index)
-    // 加载资源
-    getSourceData()
     // 显示界面
     if (currentIndex > dataArray.length - 1) {
         alert('下标已超出视频资源数量, 默认从0开始')
@@ -144,17 +141,6 @@ function videoCircul() {
 }
 
 /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Tools */
-// 加载资源
-function getSourceData() {
-    let array = document.getElementsByClassName("source");
-    for (let i = 0; i < array.length; i++) {
-        let ele = array[i];
-        let src = ipUrl + ele.textContent;
-        dataArray.push(src);
-    }
-    $('#data').remove()
-}
-
 // 滚动到当前位置
 function scrollToCurrent() {
     let array = document.getElementsByClassName('itemCurrent') || []
