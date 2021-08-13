@@ -11,11 +11,7 @@ $(function () {
 
 /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 方法 */
 function change(event) {
-    if (isShowImageBlur == 'true') {
-        isShowImageBlur = 'false'
-    } else {
-        isShowImageBlur = 'true'
-    }
+    console.log(event.target.checked)
+    isShowImageBlur = isShowImageBlur == 'true' ? 'false' : 'true'
     window.localStorage.setItem('isShowImageBlur', isShowImageBlur)
-    console.log(event.target.value)
 }

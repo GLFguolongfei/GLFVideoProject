@@ -1,22 +1,9 @@
-* {
-    padding: 0px;
-    margin: 0px;
-    border: 0px;
-}
-
 body {
-    background: black url('../../images/bg9.jpeg') no-repeat fixed;
-    background-size: cover;
     display: flex;
     justify-content: space-between;
     padding-left: 80px;
 }
 
-#data {
-    display: none;
-}
-
-/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 分割线 */
 #video {
     width: 50vw;
     height: 100vh;
@@ -103,7 +90,7 @@ body {
     margin-bottom: 5px;
 }
 
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ @media */
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 自适应 */
 @media only screen and (max-width: 500px) {
     body {
         padding: 0px;
