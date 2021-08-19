@@ -11,6 +11,7 @@ let timer;
 // 其它
 let itemHeight = '60vh'
 let modalIndex = 0;
+let interval
 
 let isShowImageBlur = window.localStorage.getItem('isShowImageBlur')
 
@@ -45,6 +46,14 @@ function addMore(type = 1) {
     if (type == 2 && dataArray.length - currentIndex > 150) {
         alert('图片太多, 不建议一次性加载全部')
         addMore()
+        interval = setInterval(function () {
+            if (currentIndex - initIndex >= 150) {
+                clearInterval(interval);
+                interval = null
+                return
+            }
+            addMore()
+        }, 1000)
         return
     }
     if (currentIndex - initIndex >= 150) {
