@@ -1,7 +1,4 @@
 /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 变量 */
-let sourceType = $('.sourceType').text();
-let ipUrl = $('.ipUrl').text();
-
 let initIndex = 0;
 let currentIndex = 0;
 // 分页加载

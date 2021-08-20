@@ -1,7 +1,4 @@
 /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 变量 */
-let sourceType = $('.sourceType').text();
-let ipUrl = $('.ipUrl').text();
-
 let currentIndex = 0;
 // 其它
 let isCircul = false // 是否自动

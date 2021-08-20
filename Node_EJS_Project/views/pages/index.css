@@ -8,10 +8,10 @@ body {
 
 .container {
 	width: 35vw;
-    height: 50vh;
+    height: 100vh;
     position: fixed;
     left: 32.5vw;
-    top: 25vh;
+    top: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;

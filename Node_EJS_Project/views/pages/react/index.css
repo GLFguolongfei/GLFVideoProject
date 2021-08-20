@@ -62,7 +62,6 @@
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 弹框 */
 #modal {
-    display: none;
     position: relative;
     z-index: 100;
 }
