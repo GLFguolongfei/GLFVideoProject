@@ -36,6 +36,14 @@ class AllImagePage extends React.Component {
         })
         // 设置标题
         document.title = '图片(' + dataArray.length + ')'
+        // 监听键盘事件
+        $(document).keydown(function(event){
+            if (event.keyCode == 37 || event.keyCode == 38 ) { // arrow up
+                self.preImg()
+            } else if (event.keyCode == 39 || event.keyCode == 40) { // arrow down
+                self.nextImg()
+            }
+        });
     }
 
     /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Functions */
@@ -233,11 +241,4 @@ ReactDOM.render(
     document.getElementById('app')
 );
 
-// 监听键盘事件
-$(document).keydown(function(event){
-    if (event.keyCode == 37 || event.keyCode == 38 ) { // arrow up
-        preImg()
-    } else if (event.keyCode == 39 || event.keyCode == 40) { // arrow down
-        nextImg()
-    }
-});
+
