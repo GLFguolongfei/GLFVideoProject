@@ -30,7 +30,7 @@ $(function () {
 /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 方法 */
 function addMore(type = 1) {
     if (type == 2 && dataArray.length - currentIndex > 150) {
-        alert('视频太多，不建议一次性加载全部')
+        antd.message.warning('最多一次加载150条')
         addMore()
         interval = setInterval(function () {
             if (currentIndex - initIndex >= 150) {
