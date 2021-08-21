@@ -67,7 +67,7 @@ http.createServer(function (req, res) {
         })
     } else if (pathname == '/image') { // 图片
         bianLi()
-        ejs.renderFile('views/pages/image/image.ejs', {
+        ejs.renderFile('views/pages/image/index.ejs', {
             sourceType: sourceType,
             ipUrl: ipUrl,
             list: imageArray
