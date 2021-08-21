@@ -2,7 +2,8 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<!--    <meta http-equiv="content-type" content="text/html; charset=UTF-8">-->
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
     <title>介绍</title>
 
@@ -13,6 +14,8 @@
     <!-- Antd -->
     <link rel="stylesheet" href="views/lib/antd/antd.css">
     <script type="text/javascript" src="views/lib/antd/antd.js"></script>
+    <!-- common -->
+    <link rel="stylesheet" href="views/lib/common/common.css">
     <!-- 自带 -->
     <link rel="stylesheet" type="text/css" href="views/pages/index.css">
 </head>
@@ -28,14 +31,8 @@
         <img src="views/images/bg8.jpeg" />
         <img src="views/images/bg9.jpeg" />
     </div>
-	<div class="container">
-        <a href="http://127.0.0.1:8090/image?index=0">图片主页</a>
-        <a href="http://127.0.0.1:8090/video?index=0">视频主页</a>
-        <a href="http://127.0.0.1:8090/videoDY">抖音视频</a>
-        <a href="http://127.0.0.1:8090/react">React</a>
-        <a href="http://127.0.0.1:8090/media">视频图片</a>
-        <a href="http://127.0.0.1:8090/setting">设置</a>
-    </div>
+    <!-- 界面 -->
+    <div id="app"></div>
 
     <!-- 看板娘 -->
     <script src="https://eqcn.ajz.miesnfu.com/wp-content/plugins/wp-3d-pony/live2dw/lib/L2Dwidget.min.js"></script>
@@ -64,11 +61,10 @@
         });
     </script>
     <!-- jQuery -->
-    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <!-- common -->
-    <link rel="stylesheet" href="views/lib/common/common.css">
     <script type="text/javascript" src="views/lib/common/common.js"></script>
     <!-- 自带 -->
-    <script src="views/pages/index.js"></script>
+    <script type="text/babel" src="views/pages/index.jsx"></script>
 </body>
 </html>

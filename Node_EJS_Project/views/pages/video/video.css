@@ -67,9 +67,14 @@
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 自适应 */
 @media only screen and (max-width: 500px) {
-    .container {
+    #container {
         padding: 10px;
     }
+
+    #button1, #button2 {
+        display: none;
+    }
+
     .item {
         width: 100% !important;
         height: auto !important;

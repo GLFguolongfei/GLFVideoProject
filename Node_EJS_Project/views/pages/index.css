@@ -6,8 +6,8 @@ body {
     background-position: center !important;
 }
 
-.container {
-	width: 35vw;
+#container {
+    width: 35vw;
     height: 100vh;
     position: fixed;
     left: 32.5vw;
