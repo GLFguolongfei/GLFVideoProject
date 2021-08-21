@@ -101,18 +101,18 @@ body {
     #video {
         width: 100vw;
         height: 100vh;
+        margin-left: 0px;
     }
-    .buttons2 {
+    #names, #videoCurrent {
+        display: none;
+    }
+    #operation {
         width: 100%;
-        position: fixed;
-        left: 0;
-        bottom: 0;
         flex-direction: row !important;
         padding-left: 0px !important;
     }
-    .buttons2 p {
+    #operation p {
         margin: 15px !important;
-        padding: 10px 35px !important;
     }
 }
 
