@@ -1,8 +1,26 @@
-
-
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 变量 */
+/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 变量 */
+var videos = [
+    "百战成诗.mp4",
+    "不谓侠.mp4",
+    "冲动的惩罚.mp4",
+    "此生过半1.mp4",
+    "此生过半2.mp4",
+    "广寒宫1.mp4",
+    "广寒宫2.mp4",
+    "归去来.mp4",
+    "来自天堂的魔鬼.mp4",
+    "让泪化作相思雨.mp4",
+    "踏山河.mp4",
+    "忘川彼岸.mp4",
+    "闲庭絮1.mp4",
+    "闲庭絮2.mp4",
+    "一生回味一面.mp4",
+    "雨点失了身.mp4",
+    "醉倾城.mp4",
+    "刚好遇见你.mp4",
+    "童话镇.mp4",
+];
 var currentEle = "";
-var videos = ["1459056880607.mp4","别怕我伤心.mp4","暗恋.mp4","等一分钟.mp4","刚好遇见你.mp4","绝世.mp4","恋人心.mp4","情一动心就痛.mp4","童话镇.mp4","一百个放心.mp4","IMG_0080.mp4","IMG_0656.mp4","Something Just Like This.mp4"];
 var isCircul = false;
 
 var html = '';
@@ -11,7 +29,7 @@ for (var i = 0; i < videos.length; i++) {
 }
 $(".container").append(html);
 
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 方法 */
+/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 方法 */
 function playVideo(self) {
     currentEle = self;
     var array = document.getElementsByTagName("video");
@@ -46,9 +64,7 @@ function endVideo(self) {
 
 function videoCurrent() {
     if (currentEle) {
-        var hhhh = $(".container").scrollTop() + $(currentEle).offset().top - $(".container").offset().top;
-        hhhh -= 20;
-        $(".container").animate({ scrollTop:  hhhh}, 300); 
+        currentEle.scrollIntoViewIfNeeded();
     } else {
         alert("当前没有正在播放的视频");
     }

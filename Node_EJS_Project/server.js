@@ -74,6 +74,15 @@ http.createServer(function (req, res) {
         }, function (err, data) {
             res.end(data);
         })
+    } else if (pathname == '/imageCSS') { // 图片
+        bianLi()
+        ejs.renderFile('views/pages/imageCSS/index.ejs', {
+            sourceType: sourceType,
+            ipUrl: ipUrl,
+            list: imageArray
+        }, function (err, data) {
+            res.end(data);
+        })
     } else if (pathname == '/video') { // 视频
         bianLi()
         ejs.renderFile('views/pages/video/video.ejs', {

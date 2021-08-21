@@ -1,5 +1,3 @@
-
-
 * {
     padding: 0px;
     margin: 0px;
@@ -17,25 +15,24 @@ body {
 
 .container {
     width: 100vw;
-    height: 100vh;
     padding: 20px;
     box-sizing: border-box;
     text-align: center;
     overflow: scroll;
+    column-count: 4;
+    column-gap: 8px;
 }
 
 .item {
-    height: 65vh;
-    margin: 0 5px 5px;
-    border-radius: 10px;
+    width: 100%;
+    border-radius: 8px;
     box-sizing: border-box;
     border: 2px solid transparent;
 }
 
 .itemCurrent {
-    height: 65vh;
-    margin: 0 5px 5px;
-    border-radius: 10px;
+    width: 100%;
+    border-radius: 8px;
     box-sizing: border-box;
     border: 2px solid white;
 }
