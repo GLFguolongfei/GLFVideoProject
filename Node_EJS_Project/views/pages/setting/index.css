@@ -6,52 +6,10 @@
     top: 25vh;
 }
 
-.row {
-    display: flex;
-    align-items: center;
-}
-
-.lable {
-    margin-right: 8px;
+p {
+    margin-bottom: 0;
     color: white;
     font-size: 18px;
 }
 
-/** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Switch开关样式 */
-input[type='checkbox'].switch {
-    width: 60px;
-    height: 30px;
-    border-radius: 15px;
-    background: #ccc;
-    position: relative;
-    /* 隐藏系统样式 */
-    outline: none;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    /* 背景色 过渡动画 */
-    transition: .3s;
-}
-
-input[type='checkbox'].switch::after {
-    content: '';
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    display: inline-block;
-    background: white;
-    /* 位置 过渡动画 */
-    transition: .3s;
-}
-
-input[type='checkbox'].switch:checked {
-    background: rgb(19, 206, 102);
-}
-
-input[type='checkbox'].switch:checked::after {
-    left: 35px;
-}
 

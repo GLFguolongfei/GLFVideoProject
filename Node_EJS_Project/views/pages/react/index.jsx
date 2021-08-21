@@ -16,7 +16,7 @@ class AllImagePage extends React.Component {
             modalIndex: 0,
             // 其它
             itemHeight: '60vh',
-            isShowImageBlur: false,
+            isShowImageBlur: '0',
         };
     }
 
@@ -117,7 +117,8 @@ class AllImagePage extends React.Component {
     }
 
     // 上一张
-    preImg() {
+    preImg(event) {
+        event.stopPropagation();
         let modalIndex = this.state.modalIndex
         modalIndex--
         if (modalIndex < 0) {
@@ -130,7 +131,8 @@ class AllImagePage extends React.Component {
     }
 
     // 下一张
-    nextImg() {
+    nextImg(event) {
+        event.stopPropagation();
         let modalIndex = this.state.modalIndex
         modalIndex++
         if (modalIndex >= dataArray.length) {
@@ -158,8 +160,7 @@ class AllImagePage extends React.Component {
     }
 
     /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Tools */
-    hiddenModal(event) {
-        event && event.stopPropagation()
+    hiddenModal() {
         this.setState({
             isShowModal: false,
         })
@@ -218,13 +219,12 @@ class AllImagePage extends React.Component {
                     isShowModal ? (
                         <div id="modal">
                             <div id="modalShow" style={{
-                                backgroundImage: isShowImageBlur == 'true' ? `url('${modalItem}')` : ''
+                                backgroundImage: +isShowImageBlur == 1 ? `url('${modalItem}')` : ''
                             }}></div>
-                            <div id="modalContent">
+                            <div id="modalContent" onClick={this.hiddenModal.bind(this)}>
                                 <img id="preImg" src="views/images/arrow-left.png" alt="上一张"
                                      onClick={this.preImg.bind(this)} />
-                                <img id="showImg" src={modalItem} alt="大图"
-                                     onClick={this.hiddenModal.bind(this)} />
+                                <img id="showImg" src={modalItem} alt="大图" />
                                 <img id="nextImg" src="views/images/arrow-right.png" alt="下一张"
                                      onClick={this.nextImg.bind(this)} />
                             </div>

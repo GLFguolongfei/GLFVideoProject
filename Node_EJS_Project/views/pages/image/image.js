@@ -106,7 +106,7 @@ function pauseAudio() {
 function itemClick(self, index) {
     modalIndex = index
     $('#showImg').attr('src', self.src)
-    if (isShowImageBlur == 'true') {
+    if (+isShowImageBlur == 1) {
         $('#modalShow').css('background-image', `url('${self.src}')`)
         $('#modalShow').css('filter', 'blur(8px)')
     }
@@ -152,7 +152,7 @@ function preImg(event) {
     }
     let src = dataArray[modalIndex]
     $('#showImg').attr('src', src)
-    if (isShowImageBlur == 'true') {
+    if (+isShowImageBlur == 1) {
         $('#modalShow').css('background-image', `url('${src}')`)
     }
 }
@@ -166,7 +166,7 @@ function nextImg(event) {
     }
     let src = dataArray[modalIndex]
     $('#showImg').attr('src', src)
-    if (isShowImageBlur == 'true') {
+    if (+isShowImageBlur == 1) {
         $('#modalShow').css('background-image', `url('${src}')`)
     }
 }
