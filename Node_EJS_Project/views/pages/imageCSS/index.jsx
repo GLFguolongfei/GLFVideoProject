@@ -116,7 +116,7 @@ class AllImagePage extends React.Component {
 
     // 上一张
     preImg(event) {
-        event.stopPropagation();
+        event && event.stopPropagation();
         let modalIndex = this.state.modalIndex
         modalIndex--
         if (modalIndex < 0) {
@@ -130,7 +130,7 @@ class AllImagePage extends React.Component {
 
     // 下一张
     nextImg(event) {
-        event.stopPropagation();
+        event && event.stopPropagation();
         let modalIndex = this.state.modalIndex
         modalIndex++
         if (modalIndex >= dataArray.length) {
