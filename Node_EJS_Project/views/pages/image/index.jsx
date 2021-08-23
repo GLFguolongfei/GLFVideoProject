@@ -17,12 +17,14 @@ class AllImagePage extends React.Component {
             // 其它
             itemHeight: '60vh',
             isShowImageBlur: '0',
+            isShowImageAutoPlay: '0',
         };
     }
 
     componentDidMount() {
         let index = getQueryString('index') || 0
         let isShowImageBlur = window.localStorage.getItem('isShowImageBlur')
+        let isShowImageAutoPlay = window.localStorage.getItem('isShowImageAutoPlay')
         if (+index > dataArray.length - 1) {
             antd.message.warning('下标已超出视频资源数量, 默认从0开始加载')
         }
@@ -31,6 +33,7 @@ class AllImagePage extends React.Component {
             initIndex: +index > dataArray.length - 1 ? 0 : +index,
             currentIndex: +index > dataArray.length - 1 ? 0 : +index,
             isShowImageBlur,
+            isShowImageAutoPlay,
         }, function () {
             self.addMore()
         })
@@ -90,6 +93,12 @@ class AllImagePage extends React.Component {
             modalItem: item,
             modalIndex: index
         })
+        if (+this.state.isShowImageAutoPlay == 1) {
+            const self = this
+            this.interval = setInterval(function () {
+                self.nextImg()
+            }, 6000)
+        }
     }
 
     // 放大
@@ -144,7 +153,7 @@ class AllImagePage extends React.Component {
         })
     }
 
-    // 视频播放
+    // 音频播放
     playAudio() {
         this.timer = snowFlow({
             num: screenW / 35,
@@ -153,9 +162,10 @@ class AllImagePage extends React.Component {
         $(".snow").show()
     }
 
-    // 视频暂停
+    // 音频暂停
     pauseAudio() {
         clearInterval(this.timer)
+        this.timer = null
         $(".snow").hide()
     }
 
@@ -164,6 +174,10 @@ class AllImagePage extends React.Component {
         this.setState({
             isShowModal: false,
         })
+        if (this.interval) {
+            clearInterval(this.interval)
+            this.interval = null
+        }
     }
 
     render() {

@@ -124,6 +124,27 @@
     height: 100vh;
 }
 
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 走马灯 */
+#carousel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.carouselItemBg {
+    width: 100vw !important;
+    height: 100vh !important;
+    display: flex !important;
+    justify-content: center;
+}
+
+.carouselItem {
+    width: auto !important;
+    height: 100vh !important;
+}
+
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 自适应 */
 @media only screen and (max-width: 500px) {
     #container {
