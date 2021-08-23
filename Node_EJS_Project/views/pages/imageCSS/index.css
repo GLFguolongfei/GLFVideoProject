@@ -99,50 +99,33 @@
 
 #preImg {
     width: 200px;
-    height: 100vh;
-    padding: calc((100vh - 80px) / 2) 60px;
+    height: 200px;
     position: fixed;
-    left: 0px;
+    top: calc(50vh - 100px);
+    left: 0;
+    padding: 60px;
     z-index: 101;
+    filter: opacity(0.6);
 }
 
 #nextImg {
     width: 200px;
-    height: 100vh;
-    padding: calc((100vh - 80px) / 2) 60px;
+    height: 200px;
     position: fixed;
-    right: 0px;
+    top: calc(50vh - 100px);
+    right: 0;
+    padding: 60px;
     z-index: 101;
+    filter: opacity(0.6);
 }
 
 #preImg:hover, #nextImg:hover {
-    background-color: black;
-    filter: contrast(0.5);
+    filter: opacity(1);
+    filter: drop-shadow(10px 10px 5px black);
 }
 
 #showImg {
     height: 100vh;
-}
-
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 走马灯 */
-#carousel {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-}
-
-.carouselItemBg {
-    width: 100vw !important;
-    height: 100vh !important;
-    display: flex !important;
-    justify-content: center;
-}
-
-.carouselItem {
-    width: auto !important;
-    height: 100vh !important;
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 自适应 */
