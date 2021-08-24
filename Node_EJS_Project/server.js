@@ -12,6 +12,7 @@ let {sourceType, rootPath, ipUrl} = require('./project.config.js')
 
 let imageArray = []
 let videoArray = []
+let htmlArray = []
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 遍历数据 */
 // 使用异步获取路径
@@ -38,6 +39,13 @@ function readDirSync(filePath) {
             if (videoFormat) {
                 let str = subFilePath.substring(rootPath.length, subFilePath.length);
                 videoArray.push(str);
+            }
+            // 网页
+            let htmlReg = /\.webarchive|\.html/g;
+            let htmlFormat = htmlReg.test(subFilePath.toLowerCase());
+            if (htmlFormat) {
+                let str = subFilePath.substring(rootPath.length, subFilePath.length);
+                htmlArray.push(str);
             }
         }
     })
@@ -123,7 +131,7 @@ http.createServer(function (req, res) {
         ejs.renderFile('views/pages/test/index.ejs', {
             sourceType: sourceType,
             ipUrl: ipUrl,
-            list: imageArray
+            list: htmlArray
         }, function (err, data) {
             res.end(data);
         })
