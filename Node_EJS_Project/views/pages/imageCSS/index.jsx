@@ -182,12 +182,10 @@ class AllImagePage extends React.Component {
         const {
             currentIndex,
             // 分页
-            bodySize,
             listData = [],
             // 弹框
             isShowModal,
             modalItem = [],
-            modalIndex,
             // 其它
             columnCount,
             isShowImageBlur,
@@ -195,9 +193,7 @@ class AllImagePage extends React.Component {
 
         return (
             <React.Fragment>
-                <div id="container" style={{
-                    columnCount
-                }}>
+                <div id="container" style={{ columnCount }}>
                     {
                         listData.map((item, index) => {
                             return (

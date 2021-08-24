@@ -28,15 +28,21 @@
         <% } %>
     </div>
     <!-- 界面 -->
-    <div id="app"></div>
+    <div id="container"></div>
+    <div id="buttons">
+        <img id="button1" src="views/images/imgBig.png" alt="放大" onclick="imgBig()" />
+        <img id="button2" src="views/images/imgSmall.png" alt="缩小" onclick="imgSmall()" />
+        <img src="views/images/location.png" alt="当前播放位置" id="videoCurrent" onclick="scrollToCurrent()" />
+        <img src="views/images/circul.png" alt="整体循环播放" id="videoCircul" onclick="videoCircul()" />
+    </div>
 
     <!-- jQuery -->
-    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <!-- 圣诞雪花 -->
-    <script type="text/javascript" src="views/lib/snow/snow.js"></script>
+    <script src="views/lib/snow/snow.js"></script>
     <!-- common -->
     <script type="text/javascript" src="views/lib/common/common.js"></script>
     <!-- MySelf -->
-    <script type="text/babel" src="views/pages/video/index.jsx"></script>
+    <script src="views/pages/video/index.js"></script>
 </body>
 </html>

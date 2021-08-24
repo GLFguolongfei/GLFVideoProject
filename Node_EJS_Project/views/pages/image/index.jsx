@@ -184,12 +184,10 @@ class AllImagePage extends React.Component {
         const {
             currentIndex,
             // 分页
-            bodySize,
             listData = [],
             // 弹框
             isShowModal,
             modalItem = [],
-            modalIndex,
             // 其它
             itemHeight,
             isShowImageBlur,
