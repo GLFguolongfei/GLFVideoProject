@@ -1,6 +1,11 @@
-#container {
+#app {
     width: 100vw;
     height: 100vh;
+    overflow: auto;
+}
+
+#container {
+    width: 100vw;
     padding: 20px;
     box-sizing: border-box;
     text-align: center;
@@ -8,7 +13,7 @@
 }
 
 .item {
-    height: 65vh;
+    width: 100%;
     margin: 0 5px 5px;
     border-radius: 10px;
     box-sizing: border-box;
@@ -22,9 +27,9 @@
 }
 
 .itemCurrent {
-    height: 65vh;
-    margin: 0 5px 5px;
-    border-radius: 10px;
+    width: 100%;
+    margin: 0 4px 4px;
+    border-radius: 8px;
     box-sizing: border-box;
     border: 2px solid white;
     box-shadow: 10px 10px 30px white;
