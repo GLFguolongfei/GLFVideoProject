@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
-    <title>视频</title>
+    <title>图片</title>
 
     <!-- React -->
     <script type="text/javascript" src="views/lib/react/react.development.js"></script>
@@ -16,7 +16,7 @@
     <!-- common -->
     <link rel="stylesheet" href="views/lib/common/common.css">
     <!-- MySelf -->
-    <link rel="stylesheet" type="text/css" href="views/pages/video/video.css">
+    <link rel="stylesheet" type="text/css" href="views/pages/test/index.css">
 </head>
 <body>
     <!-- 数据源 -->
@@ -28,21 +28,15 @@
         <% } %>
     </div>
     <!-- 界面 -->
-    <div id="container"></div>
-    <div id="buttons">
-        <img id="button1" src="views/images/imgBig.png" alt="放大" onclick="imgBig()" />
-        <img id="button2" src="views/images/imgSmall.png" alt="缩小" onclick="imgSmall()" />
-        <img src="views/images/location.png" alt="当前播放位置" id="videoCurrent" onclick="scrollToCurrent()" />
-        <img src="views/images/circul.png" alt="整体循环播放" id="videoCircul" onclick="videoCircul()" />
-    </div>
+    <div id="app"></div>
 
     <!-- jQuery -->
-    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <!-- 圣诞雪花 -->
-    <script src="views/lib/snow/snow.js"></script>
+    <script type="text/javascript" src="views/lib/snow/snow.js"></script>
     <!-- common -->
     <script type="text/javascript" src="views/lib/common/common.js"></script>
     <!-- MySelf -->
-    <script src="views/pages/video/video.js"></script>
+    <script type="text/babel" src="views/pages/test/index.jsx"></script>
 </body>
 </html>

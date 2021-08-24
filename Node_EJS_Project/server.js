@@ -85,7 +85,16 @@ http.createServer(function (req, res) {
         })
     } else if (pathname == '/video') { // 视频
         bianLi()
-        ejs.renderFile('views/pages/video/video.ejs', {
+        ejs.renderFile('views/pages/video/index.ejs', {
+            sourceType: sourceType,
+            ipUrl: ipUrl,
+            list: videoArray
+        }, function (err, data) {
+            res.end(data);
+        })
+    } else if (pathname == '/videoCSS') { // 视频
+        bianLi()
+        ejs.renderFile('views/pages/videoCSS/index.ejs', {
             sourceType: sourceType,
             ipUrl: ipUrl,
             list: videoArray
@@ -94,28 +103,28 @@ http.createServer(function (req, res) {
         })
     } else if (pathname == '/videoDY') { // 抖音视频
         bianLi()
-        ejs.renderFile('views/pages/videoDY/videoDY.ejs', {
+        ejs.renderFile('views/pages/videoDY/index.ejs', {
             sourceType: sourceType,
             ipUrl: ipUrl,
             list: videoArray
         }, function (err, data) {
             res.end(data);
         })
-    } else if (pathname == '/react') { // react
-        bianLi()
-        ejs.renderFile('views/pages/react/index.ejs', {
-            sourceType: sourceType,
-            ipUrl: ipUrl,
-            list: imageArray
-        }, function (err, data) {
-            res.end(data);
-        })
-    } else if (pathname == '/media') { // iframe（图片 + 视频）
-        ejs.renderFile('views/pages/media/media.ejs', {}, function (err, data) {
+    } else if (pathname == '/iframe') { // iframe（图片 + 视频）
+        ejs.renderFile('views/pages/iframe/index.ejs', {}, function (err, data) {
             res.end(data);
         })
     } else if (pathname == '/setting') { // 设置
         ejs.renderFile('views/pages/setting/index.ejs', {}, function (err, data) {
+            res.end(data);
+        })
+    } else if (pathname == '/test') { // test
+        bianLi()
+        ejs.renderFile('views/pages/test/index.ejs', {
+            sourceType: sourceType,
+            ipUrl: ipUrl,
+            list: imageArray
+        }, function (err, data) {
             res.end(data);
         })
     } else {

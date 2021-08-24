@@ -43,6 +43,7 @@ class SettingPage extends React.Component {
                                  checkedChildren="开启" unCheckedChildren="关闭"
                                  onChange={this.onChange.bind(this)} />
                 </antd.Space>
+                <br/>
                 <antd.Space>
                     <p>图片主页 预览时 是否自动播放</p>
                     <antd.Switch checked={isShowImageAutoPlay}
