@@ -8,17 +8,34 @@ class TestPage extends React.Component {
 
     componentDidMount() {
         console.log(dataArray)
+
+
+        var url = dataArray[1]
+
+        fetch(url).then(function(response) {
+            console.log(response);
+        }, function(error) {
+            console.log(error)
+        })
     }
 
     /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Functions */
 
     render() {
         return (
-            <React.Fragment>
-                <iframe id="iframe1" className="iframe" src={dataArray[1]}></iframe>
+            <div id='container'>
+                {/*<iframe id="iframe1" className="iframe" src={dataArray[1]}></iframe>*/}
+                {
+                    dataArray.map((item, index) => {
+                        return (
+                            <div>
+                                <a href={item}>{item}</a>
+                            </div>
+                        )
+                    })
+                }
 
-
-            </React.Fragment>
+            </div>
         );
     }
 }
