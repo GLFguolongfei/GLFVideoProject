@@ -28,13 +28,12 @@ class TestPage extends React.Component {
                 {
                     dataArray.map((item, index) => {
                         return (
-                            <div>
+                            <div key={index}>
                                 <a href={item}>{item}</a>
                             </div>
                         )
                     })
                 }
-
             </div>
         );
     }
