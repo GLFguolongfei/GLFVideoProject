@@ -41,6 +41,7 @@ class SettingPage extends React.Component {
             <div id='container'>
                 <a href={`${url}/image?index=0`}>图片主页</a>
                 <a href={`${url}/imageCSS?index=0`}>图片主页（样式2）</a>
+                <a href={`${url}/imageCSSBD?index=0`}>图片主页（样式3）</a>
                 <a href={`${url}/video?index=0`}>视频主页</a>
                 <a href={`${url}/videoCSS?index=0`}>视频主页（样式2）</a>
                 <a href={`${url}/videoDY`}>抖音</a>

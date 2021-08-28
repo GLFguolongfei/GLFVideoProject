@@ -91,6 +91,15 @@ http.createServer(function (req, res) {
         }, function (err, data) {
             res.end(data);
         })
+    } else if (pathname == '/imageCSSBD') { // 图片（百度瀑布流样式）
+        bianLi()
+        ejs.renderFile('views/pages/imageCSSBD/index.ejs', {
+            sourceType: sourceType,
+            ipUrl: ipUrl,
+            list: imageArray
+        }, function (err, data) {
+            res.end(data);
+        })
     } else if (pathname == '/video') { // 视频
         bianLi()
         ejs.renderFile('views/pages/video/index.ejs', {

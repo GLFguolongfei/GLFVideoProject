@@ -13,6 +13,8 @@ let dataArray = [];
 
 /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 加载完成 */
 $(function () {
+    console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Ready')
+
     // 加载资源
     getSourceData()
 });
@@ -61,4 +63,5 @@ function getSourceData() {
     }
     $('#data').remove()
 }
+
 
