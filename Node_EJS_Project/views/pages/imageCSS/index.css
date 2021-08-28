@@ -66,15 +66,10 @@
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 弹框 */
-#modal {
-    position: relative;
-    z-index: 100;
-}
-
 #modalShow {
     width: 100vw;
     height: 100vh;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     filter: blur(8px);
@@ -87,7 +82,7 @@
 #modalContent {
     width: 100vw;
     height: 100vh;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     display: flex;
@@ -99,7 +94,7 @@
 #preImg {
     width: 200px;
     height: 200px;
-    position: fixed;
+    position: absolute;
     top: calc(50vh - 100px);
     left: 0;
     padding: 60px;
@@ -110,7 +105,7 @@
 #nextImg {
     width: 200px;
     height: 200px;
-    position: fixed;
+    position: absolute;
     top: calc(50vh - 100px);
     right: 0;
     padding: 60px;

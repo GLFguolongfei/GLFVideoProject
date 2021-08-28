@@ -6,6 +6,15 @@ class AllImagePage extends React.Component {
         this.state = {
             initIndex: 0,
             currentIndex: 0,
+            // 样式
+            modalStyle: {
+                width: '100vw',
+                height: '100vh',
+                position: 'fixed',
+                top: '0',
+                left: '0',
+                padding: '0',
+            },
             // 分页加载
             bodySize: 150,
             pageSize: 15,
@@ -198,6 +207,8 @@ class AllImagePage extends React.Component {
     render() {
         const {
             currentIndex,
+            // 样式
+            modalStyle,
             // 分页
             listData = [],
             // 弹框
@@ -240,23 +251,23 @@ class AllImagePage extends React.Component {
                        onPlay={this.playAudio.bind(this)}
                        onPause={this.pauseAudio.bind(this)}>
                 </audio>
-                {
-                    // 弹框
-                    isShowModal ? (
-                        <div id="modal">
-                            <div id="modalShow" style={{
-                                backgroundImage: +isShowImageBlur == 1 ? `url('${modalItem}')` : ''
-                            }}></div>
-                            <div id="modalContent" onClick={this.hiddenModal.bind(this)}>
-                                <img id="preImg" src="views/images/arrow-left.png" alt="上一张"
-                                     onClick={this.preImg.bind(this)} />
-                                <img id="showImg" src={modalItem} alt="大图" />
-                                <img id="nextImg" src="views/images/arrow-right.png" alt="下一张"
-                                     onClick={this.nextImg.bind(this)} />
-                            </div>
-                        </div>
-                    ) : null
-                }
+
+                {/** 弹框-图片 */}
+                <antd.Modal visible={isShowModal} style={modalStyle} bodyStyle={modalStyle}
+                            title="" width='100vw'
+                            closable={false} footer={null}
+                            onCancel={this.hiddenModal.bind(this)}>
+                    <div id="modalShow" style={{
+                        backgroundImage: +isShowImageBlur == 1 ? `url('${modalItem}')` : ''
+                    }}></div>
+                    <div id="modalContent" onClick={this.hiddenModal.bind(this)}>
+                        <img id="preImg" src="views/images/arrow-left.png" alt="上一张"
+                             onClick={this.preImg.bind(this)} />
+                        <img id="showImg" src={modalItem} alt="大图" />
+                        <img id="nextImg" src="views/images/arrow-right.png" alt="下一张"
+                             onClick={this.nextImg.bind(this)} />
+                    </div>
+                </antd.Modal>
                 {/** 弹框-设置 */}
                 <antd.Drawer
                     visible={isShowSetting}
