@@ -16,6 +16,7 @@ class Setting extends React.Component {
             isShowImageBlur: false,
             isShowImageAutoPlay: false,
             isShowScaleAntD: false,
+            AutoPlayTime: 2,
         };
     }
 
@@ -23,10 +24,12 @@ class Setting extends React.Component {
         let isShowImageBlur = window.localStorage.getItem('isShowImageBlur')
         let isShowImageAutoPlay = window.localStorage.getItem('isShowImageAutoPlay')
         let isShowScaleAntD = window.localStorage.getItem('isShowScaleAntD')
+        let AutoPlayTime = window.localStorage.getItem('AutoPlayTime')
         this.setState({
             isShowImageBlur: +isShowImageBlur == 1 ? true : false,
             isShowImageAutoPlay: +isShowImageAutoPlay == 1 ? true : false,
             isShowScaleAntD: +isShowScaleAntD == 1 ? true : false,
+            AutoPlayTime: +AutoPlayTime,
         })
     }
 
@@ -54,8 +57,16 @@ class Setting extends React.Component {
         window.localStorage.setItem('isShowScaleAntD', checked ? '1' : '0')
     }
 
+    onChange4(event) {
+        console.log(event.target.value)
+        this.setState({
+            AutoPlayTime: event.target.value
+        })
+        window.localStorage.setItem('AutoPlayTime', event.target.value)
+    };
+
     render() {
-        const { containerStyle, textStyle, isShowImageBlur, isShowImageAutoPlay, isShowScaleAntD } = this.state
+        const { containerStyle, textStyle, isShowImageBlur, isShowImageAutoPlay, isShowScaleAntD, AutoPlayTime } = this.state
 
         return (
             <div style={containerStyle}>
@@ -72,6 +83,22 @@ class Setting extends React.Component {
                                  checkedChildren="开启" unCheckedChildren="关闭"
                                  onChange={this.onChange2.bind(this)} />
                 </antd.Space>
+                {
+                    isShowImageAutoPlay ? (
+                        <React.Fragment>
+                            <br/>
+                            <antd.Space>
+                                <antd.Radio.Group value={AutoPlayTime} onChange={this.onChange4.bind(this)} >
+                                    <antd.Radio value={1}>1秒</antd.Radio>
+                                    <antd.Radio value={3}>3秒</antd.Radio>
+                                    <antd.Radio value={5}>5秒</antd.Radio>
+                                    <antd.Radio value={7}>7秒</antd.Radio>
+                                    <antd.Radio value={9}>9秒</antd.Radio>
+                                </antd.Radio.Group>
+                            </antd.Space>
+                        </React.Fragment>
+                    ) : null
+                }
                 <br/>
                 <antd.Space>
                     <p style={textStyle}>是否使用 And Design 预览</p>
