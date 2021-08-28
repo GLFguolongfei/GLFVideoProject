@@ -49,14 +49,14 @@ class Setting extends React.Component {
         return (
             <div style={containerStyle}>
                 <antd.Space>
-                    <p style={textStyle}>图片主页 预览时 是否开启背景模糊</p>
+                    <p style={textStyle}>预览时 是否开启背景模糊</p>
                     <antd.Switch checked={isShowImageBlur}
                                  checkedChildren="开启" unCheckedChildren="关闭"
                                  onChange={this.onChange.bind(this)} />
                 </antd.Space>
                 <br/>
                 <antd.Space>
-                    <p style={textStyle}>图片主页 预览时 是否自动播放</p>
+                    <p style={textStyle}>预览时 是否自动播放</p>
                     <antd.Switch checked={isShowImageAutoPlay}
                                  checkedChildren="开启" unCheckedChildren="关闭"
                                  onChange={this.onChange2.bind(this)} />

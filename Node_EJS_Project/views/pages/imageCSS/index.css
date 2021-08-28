@@ -12,8 +12,20 @@
     column-count: 5;
 }
 
+.itemCon {
+    position: relative;
+}
+
+.itemBtn {
+    position: absolute;
+    right: 12px;
+    bottom: 22px;
+}
+
 .item {
     width: 100%;
+    min-width: 60px;
+    min-height: 60px;
     padding: 8px;
     margin: 0 4px 8px;
     border-radius: 8px;

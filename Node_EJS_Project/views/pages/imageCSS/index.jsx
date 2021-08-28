@@ -111,6 +111,12 @@ class AllImagePage extends React.Component {
         }
     }
 
+    // 删除
+    delete(item, event) {
+        event.stopPropagation()
+        console.log(item)
+    }
+
     // 放大
     imgBig() {
         let columnCount = this.state.columnCount
@@ -226,10 +232,12 @@ class AllImagePage extends React.Component {
                     {
                         listData.map((item, index) => {
                             return (
-                                <img key={index}
-                                     className="item"
-                                     src={item}
-                                     onClick={this.itemClick.bind(this, item, index)} />
+                                <div key={index} className='itemCon' onClick={this.itemClick.bind(this, item, index)}>
+                                    <img className="item"  src={item} />
+                                    {/*<antd.Button className='itemBtn' danger onClick={this.delete.bind(this, item)}>*/}
+                                    {/*    删除*/}
+                                    {/*</antd.Button>*/}
+                                </div>
                             )
                         })
                     }
