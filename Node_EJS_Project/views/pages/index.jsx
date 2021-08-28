@@ -45,7 +45,6 @@ class SettingPage extends React.Component {
                 <a href={`${url}/videoCSS?index=0`}>视频主页（样式2）</a>
                 <a href={`${url}/videoDY`}>抖音</a>
                 <a href={`${url}/iframe`}>多媒体</a>
-                <a href={`${url}/setting`}>设置</a>
                 <a href={`${url}/test`}>Test</a>
             </div>
         );

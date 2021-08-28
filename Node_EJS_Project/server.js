@@ -118,12 +118,8 @@ http.createServer(function (req, res) {
         }, function (err, data) {
             res.end(data);
         })
-    } else if (pathname == '/iframe') { // iframe（图片 + 视频）
+    } else if (pathname == '/iframe') { // 多媒体（iframe）（图片 + 视频）
         ejs.renderFile('views/pages/iframe/index.ejs', {}, function (err, data) {
-            res.end(data);
-        })
-    } else if (pathname == '/setting') { // 设置
-        ejs.renderFile('views/pages/setting/index.ejs', {}, function (err, data) {
             res.end(data);
         })
     } else if (pathname == '/test') { // test

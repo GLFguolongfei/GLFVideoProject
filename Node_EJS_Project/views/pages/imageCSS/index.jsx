@@ -14,6 +14,7 @@ class AllImagePage extends React.Component {
             isShowModal: false,
             modalItem: {},
             modalIndex: 0,
+            isShowSetting: false,
             // 其它
             columnCount: 5,
             isShowImageBlur: '0',
@@ -123,6 +124,13 @@ class AllImagePage extends React.Component {
         }
     }
 
+    // 设置
+    setting() {
+        this.setState({
+            isShowSetting: true,
+        })
+    }
+
     // 上一张
     preImg(event) {
         event && event.stopPropagation();
@@ -169,13 +177,22 @@ class AllImagePage extends React.Component {
 
     /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Tools */
     hiddenModal() {
-        this.setState({
-            isShowModal: false,
-        })
         if (this.interval) {
             clearInterval(this.interval)
             this.interval = null
         }
+        if (this.state.isShowSetting) {
+            let isShowImageBlur = window.localStorage.getItem('isShowImageBlur')
+            let isShowImageAutoPlay = window.localStorage.getItem('isShowImageAutoPlay')
+            this.setState({
+                isShowImageBlur,
+                isShowImageAutoPlay,
+            })
+        }
+        this.setState({
+            isShowModal: false,
+            isShowSetting: false,
+        })
     }
 
     render() {
@@ -186,6 +203,7 @@ class AllImagePage extends React.Component {
             // 弹框
             isShowModal,
             modalItem = [],
+            isShowSetting,
             // 其它
             columnCount,
             isShowImageBlur,
@@ -216,6 +234,7 @@ class AllImagePage extends React.Component {
                 <div id="buttons">
                     <img src="views/images/imgBig.png" alt="放大" onClick={this.imgBig.bind(this)} />
                     <img src="views/images/imgSmall.png" alt="缩小" onClick={this.imgSmall.bind(this)} />
+                    <img src="views/images/setting.png" alt="设置" onClick={this.setting.bind(this)} />
                 </div>
                 <audio id="audio" src="views/images/此生过半.mp3" loop controls="controls"
                        onPlay={this.playAudio.bind(this)}
@@ -238,6 +257,16 @@ class AllImagePage extends React.Component {
                         </div>
                     ) : null
                 }
+                {/** 弹框-设置 */}
+                <antd.Drawer
+                    visible={isShowSetting}
+                    title="设置"
+                    width='35vw'
+                    closable={false}
+                    onClose={this.hiddenModal.bind(this)}
+                >
+                    <Setting />
+                </antd.Drawer>
             </React.Fragment>
         );
     }
