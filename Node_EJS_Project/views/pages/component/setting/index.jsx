@@ -15,15 +15,18 @@ class Setting extends React.Component {
             // 状态
             isShowImageBlur: false,
             isShowImageAutoPlay: false,
+            isShowScaleAntD: false,
         };
     }
 
     componentDidMount() {
         let isShowImageBlur = window.localStorage.getItem('isShowImageBlur')
         let isShowImageAutoPlay = window.localStorage.getItem('isShowImageAutoPlay')
+        let isShowScaleAntD = window.localStorage.getItem('isShowScaleAntD')
         this.setState({
             isShowImageBlur: +isShowImageBlur == 1 ? true : false,
-            isShowImageAutoPlay: +isShowImageAutoPlay == 1 ? true : false
+            isShowImageAutoPlay: +isShowImageAutoPlay == 1 ? true : false,
+            isShowScaleAntD: +isShowScaleAntD == 1 ? true : false,
         })
     }
 
@@ -43,8 +46,16 @@ class Setting extends React.Component {
         window.localStorage.setItem('isShowImageAutoPlay', checked ? '1' : '0')
     }
 
+    onChange3(checked) {
+        console.log(checked)
+        this.setState({
+            isShowScaleAntD: checked
+        })
+        window.localStorage.setItem('isShowScaleAntD', checked ? '1' : '0')
+    }
+
     render() {
-        const { containerStyle, textStyle, isShowImageBlur, isShowImageAutoPlay } = this.state
+        const { containerStyle, textStyle, isShowImageBlur, isShowImageAutoPlay, isShowScaleAntD } = this.state
 
         return (
             <div style={containerStyle}>
@@ -60,6 +71,13 @@ class Setting extends React.Component {
                     <antd.Switch checked={isShowImageAutoPlay}
                                  checkedChildren="开启" unCheckedChildren="关闭"
                                  onChange={this.onChange2.bind(this)} />
+                </antd.Space>
+                <br/>
+                <antd.Space>
+                    <p style={textStyle}>是否使用 And Design 预览</p>
+                    <antd.Switch checked={isShowScaleAntD}
+                                 checkedChildren="开启" unCheckedChildren="关闭"
+                                 onChange={this.onChange3.bind(this)} />
                 </antd.Space>
             </div>
         );

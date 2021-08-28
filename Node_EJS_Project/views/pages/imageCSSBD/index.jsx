@@ -26,9 +26,10 @@ class AllImagePage extends React.Component {
             modalIndex: 0,
             isShowSetting: false,
             // 其它
-            columnCount: 5,
+            itemHeight: 200,
             isShowImageBlur: '0',
             isShowImageAutoPlay: '0',
+            isShowScaleAntD: '0',
             isLoading: true,
         };
     }
@@ -37,6 +38,7 @@ class AllImagePage extends React.Component {
         let index = getQueryString('index') || 0
         let isShowImageBlur = window.localStorage.getItem('isShowImageBlur')
         let isShowImageAutoPlay = window.localStorage.getItem('isShowImageAutoPlay')
+        let isShowScaleAntD = window.localStorage.getItem('isShowScaleAntD')
         if (+index > dataArray.length - 1) {
             antd.message.warning('下标已超出视频资源数量, 默认从0开始加载')
         }
@@ -60,6 +62,7 @@ class AllImagePage extends React.Component {
             currentIndex: +index > dataArray.length - 1 ? 0 : +index,
             isShowImageBlur,
             isShowImageAutoPlay,
+            isShowScaleAntD,
             isLoading: false,
         }, function () {
             self.addMore()
@@ -115,6 +118,10 @@ class AllImagePage extends React.Component {
     }
 
     itemClick(item, index) {
+        let isShowScaleAntD = this.state.isShowScaleAntD
+        if (+isShowScaleAntD == 1) {
+            return
+        }
         this.setState({
             isShowModal: true,
             modalItem: item,
@@ -136,23 +143,47 @@ class AllImagePage extends React.Component {
 
     // 放大
     imgBig() {
-        let columnCount = this.state.columnCount
-        if (columnCount - 1 >= 2) {
-            columnCount -= 1
+        let itemHeight = this.state.itemHeight
+        if (itemHeight + 50 > screenH) {
+            itemHeight = screenH
+        } else {
+            itemHeight += 50;
+        }
+        this.setState({
+            itemHeight,
+        })
+
+        if (this.state.listData.length > 60) {
+            const self = this
             this.setState({
-                columnCount
+                isLoading: true,
             })
+            setTimeout(function () {
+                self.hiddenModal()
+            }, 1000)
         }
     }
 
     // 缩小
     imgSmall() {
-        let columnCount = this.state.columnCount
-        if (columnCount + 1 <= 9) {
-            columnCount += 1
+        let itemHeight = this.state.itemHeight
+        if (itemHeight - 50 > 100) {
+            itemHeight -= 50
+        } else {
+            itemHeight = 100;
+        }
+        this.setState({
+            itemHeight
+        })
+
+        if (this.state.listData.length > 60) {
+            const self = this
             this.setState({
-                columnCount
+                isLoading: true,
             })
+            setTimeout(function () {
+                self.hiddenModal()
+            }, 1000)
         }
     }
 
@@ -218,14 +249,17 @@ class AllImagePage extends React.Component {
         if (this.state.isShowSetting) {
             let isShowImageBlur = window.localStorage.getItem('isShowImageBlur')
             let isShowImageAutoPlay = window.localStorage.getItem('isShowImageAutoPlay')
+            let isShowScaleAntD = window.localStorage.getItem('isShowScaleAntD')
             this.setState({
                 isShowImageBlur,
                 isShowImageAutoPlay,
+                isShowScaleAntD,
             })
         }
         this.setState({
             isShowModal: false,
             isShowSetting: false,
+            isLoading: false,
         })
     }
 
@@ -264,23 +298,31 @@ class AllImagePage extends React.Component {
             modalItem = [],
             isShowSetting,
             // 其它
-            columnCount,
+            itemHeight,
             isShowImageBlur,
+            isShowScaleAntD,
             isLoading,
         } = this.state
 
         return (
             <React.Fragment>
                 <antd.Spin spinning={isLoading}>
-                    <div id="container" style={{ columnCount }}>
+                    <div id="container">
+                        <antd.Image.PreviewGroup>
                         {
                             listData.map((item, index) => {
                                 return (
                                     <div key={index} className='item' style={{
-                                        width: item.width * 200 / item.height + 'px', /* 高度固定, 计算宽度 */
-                                        flexGrow: item.width * 200 / item.height, /* 定义项目的放大比例 */
+                                        width: item.width * itemHeight / item.height + 'px', /* 高度固定, 计算宽度 */
+                                        flexGrow: item.width * itemHeight / item.height, /* 定义项目的放大比例 */
                                     }} onClick={this.itemClick.bind(this, item, index)}>
-                                        <img src={item.url} alt="" />
+                                        {/*<img src={item.url} alt="" />*/}
+                                        <antd.Image
+                                            width={'100%'}
+                                            src={item.url}
+                                            preview={+isShowScaleAntD == 1}
+                                            placeholder={'图片不见喽！'}
+                                        />
                                         {/*<antd.Button className='itemBtn' danger onClick={this.delete.bind(this, item)}>*/}
                                         {/*    删除*/}
                                         {/*</antd.Button>*/}
@@ -288,6 +330,7 @@ class AllImagePage extends React.Component {
                                 )
                             })
                         }
+                        </antd.Image.PreviewGroup>
                     </div>
                 </antd.Spin>
                 {

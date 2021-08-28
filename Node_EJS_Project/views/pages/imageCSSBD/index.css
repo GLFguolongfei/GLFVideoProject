@@ -6,7 +6,7 @@
 
 #container {
     width: 100vw;
-    min-height: 100vh;
+    min-height: 200px;
     box-sizing: border-box;
     text-align: center;
     overflow: scroll;
@@ -45,6 +45,7 @@
 
 .item img {
     width: 100%;
+    min-height: 100px;
 }
 
 .addMore {
