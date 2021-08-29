@@ -25,13 +25,14 @@ class AllImagePage extends React.Component {
             modalItem: {},
             modalIndex: 0,
             isShowSetting: false,
-            // 其它
-            itemHeight: 200,
+            // 设置
             isShowImageBlur: '0',
             isShowImageAutoPlay: '0',
             isShowScaleAntD: '0',
-            isLoading: true,
             AutoPlayTime: 5,
+            // 其它
+            itemHeight: 200,
+            isLoading: true,
         };
     }
 
@@ -49,7 +50,10 @@ class AllImagePage extends React.Component {
         let array = []
         for (let i = 0; i < dataArray.length; i++) {
             let item = dataArray[i]
-            let size = await this.getImgSize(item)
+            let size = {width: 100, height: 100}
+            if (i > +index && i < +index + 150) {
+                size = await this.getImgSize(item)
+            }
             array.push({
                 url: item,
                 ...size
@@ -302,10 +306,11 @@ class AllImagePage extends React.Component {
             isShowModal,
             modalItem = [],
             isShowSetting,
-            // 其它
-            itemHeight,
+            // 设置
             isShowImageBlur,
             isShowScaleAntD,
+            // 其它
+            itemHeight,
             isLoading,
         } = this.state
 

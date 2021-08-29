@@ -3,10 +3,10 @@ let path = require("path")
 // 1-本地(sources文件夹)资源
 // 2-iCloud资源
 // 3-Document资源
-let sourceType = 1 // 1 // 1 // 1 // 1 // 1 // 1 // 1 // 1 // 2 // 99 // 99 // 2
+let sourceType = 99 // 1 // 1 // 1 // 1 // 1 // 1 // 1 // 1 // 1 // 2 // 99 // 99 // 2
 
-let rootPath = "/Volumes/GuoLongfei/1-电视剧/综艺频道" // "/Volumes/我的文档/会所" // "/Volumes/未命名/会所"
-let ipUrl = "http://127.0.0.1:8080" // "http://127.0.0.1:8080" // "http://127.0.0.1:8080"
+let rootPath = "/Volumes/我的文档/会所" // "/Volumes/GuoLongfei/1-电视剧/综艺频道" // "/Volumes/我的文档/会所" // "/Volumes/未命名/会所"
+let ipUrl = "http://127.0.0.1:8080" // "http://127.0.0.1:8080" // "http://127.0.0.1:8080" // "http://127.0.0.1:8080"
 
 switch (+sourceType) {
     case 1:
