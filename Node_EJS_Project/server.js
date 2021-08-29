@@ -29,21 +29,21 @@ function readDirSync(filePath) {
             // 图片（.png .jpg .jpeg .jif）
             let imgReg = /\.png|\.jpg|\.jpeg|\.jif/g;
             let imgFormat = imgReg.test(subFilePath.toLowerCase());
-            if (imgFormat) {
-                let str = subFilePath.substring(rootPath.length, subFilePath.length);
-                imageArray.push(str);
-            }
             // 视频（.mp4 .rmvb .mkv）
             let videoReg = /\.mp4|\.rmvb|\.mkv|\.mov/g;
             let videoFormat = videoReg.test(subFilePath.toLowerCase());
-            if (videoFormat) {
+            // 网页
+            // let htmlReg = /\.webarchive|\.html/g;
+            let htmlReg = /\.txt|\.html/g;
+            let htmlFormat = htmlReg.test(subFilePath.toLowerCase());
+
+            if (imgFormat) {
+                let str = subFilePath.substring(rootPath.length, subFilePath.length);
+                imageArray.push(str);
+            } else if (videoFormat) {
                 let str = subFilePath.substring(rootPath.length, subFilePath.length);
                 videoArray.push(str);
-            }
-            // 网页
-            let htmlReg = /\.webarchive|\.html/g;
-            let htmlFormat = htmlReg.test(subFilePath.toLowerCase());
-            if (htmlFormat) {
+            } else if (htmlFormat) {
                 let str = subFilePath.substring(rootPath.length, subFilePath.length);
                 htmlArray.push(str);
             }
@@ -55,6 +55,7 @@ function readDirSync(filePath) {
 function bianLi() {
     imageArray = [];
     videoArray = [];
+    htmlArray = []
     readDirSync(rootPath)
     console.log("资源路径: " + rootPath);
     console.log("图片个数: " + imageArray.length);

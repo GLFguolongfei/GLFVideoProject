@@ -9,9 +9,7 @@ class TestPage extends React.Component {
     componentDidMount() {
         console.log(dataArray)
 
-
-        var url = dataArray[1]
-
+        let url = dataArray[1]
         fetch(url).then(function(response) {
             console.log(response);
         }, function(error) {
@@ -19,17 +17,19 @@ class TestPage extends React.Component {
         })
     }
 
-    /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Functions */
-
     render() {
         return (
             <div id='container'>
-                {/*<iframe id="iframe1" className="iframe" src={dataArray[1]}></iframe>*/}
                 {
                     dataArray.map((item, index) => {
                         return (
-                            <div key={index}>
+                            <div key={index} className='item'>
                                 <a href={item}>{item}</a>
+                                <iframe src={item}>
+                                    <head>
+                                        <meta httpEquiv="Content-Type" content="text/html; charset=gb2312" />
+                                    </head>
+                                </iframe>
                             </div>
                         )
                     })
