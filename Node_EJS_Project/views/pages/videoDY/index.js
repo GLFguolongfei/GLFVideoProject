@@ -34,9 +34,9 @@ $(document).keydown(function(event){
             $('#video').addClass('videoFull')
         }
         isFullScreen = !isFullScreen
-    } else if (event.keyCode == 37 || event.keyCode == 38) { // arrow up
+    } else if (event.keyCode == 38) { // arrow up
         preVideo()
-    } else if (event.keyCode == 39 || event.keyCode == 40) { // arrow down
+    } else if (event.keyCode == 40) { // arrow down
         nextVideo()
     }
 });
