@@ -280,7 +280,7 @@ class AllImagePage extends React.Component {
                 <antd.Drawer
                     visible={isShowSetting}
                     title="设置"
-                    width='35vw'
+                    width='30vw'
                     closable={false}
                     onClose={this.hiddenModal.bind(this)}
                 >

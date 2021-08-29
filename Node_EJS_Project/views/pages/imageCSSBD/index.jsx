@@ -326,7 +326,7 @@ class AllImagePage extends React.Component {
                                             width={'100%'}
                                             src={item.url}
                                             preview={+isShowScaleAntD == 1}
-                                            placeholder={'图片不见喽！'}
+                                            placeholder=''
                                         />
                                         {/*<antd.Button className='itemBtn' danger onClick={this.delete.bind(this, item)}>*/}
                                         {/*    删除*/}
@@ -376,7 +376,7 @@ class AllImagePage extends React.Component {
                 <antd.Drawer
                     visible={isShowSetting}
                     title="设置"
-                    width='35vw'
+                    width='30vw'
                     closable={false}
                     onClose={this.hiddenModal.bind(this)}
                 >
