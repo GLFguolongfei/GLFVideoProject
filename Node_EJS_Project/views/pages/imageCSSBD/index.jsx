@@ -129,13 +129,13 @@ class AllImagePage extends React.Component {
         if (+isShowScaleAntD == 1) {
             return
         }
+        const self = this
         this.setState({
             isShowModal: true,
             modalItem: item,
-            modalIndex: index
+            modalIndex: self.state.initIndex + index
         })
         if (+this.state.isShowImageAutoPlay == 1) {
-            const self = this
             this.interval = setInterval(function () {
                 self.nextImg()
             }, this.state.AutoPlayTime * 1000)

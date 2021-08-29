@@ -98,13 +98,13 @@ class AllImagePage extends React.Component {
     }
 
     itemClick(item, index) {
+        const self = this
         this.setState({
             isShowModal: true,
             modalItem: item,
-            modalIndex: index
+            modalIndex: self.state.initIndex + index
         })
         if (+this.state.isShowImageAutoPlay == 1) {
-            const self = this
             this.interval = setInterval(function () {
                 self.nextImg()
             }, 6000)
