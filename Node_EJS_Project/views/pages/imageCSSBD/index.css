@@ -32,7 +32,7 @@
     align-items: center;
     padding: 8px;
     border-radius: 8px;
-    box-sizing: border-box;
+    box-sizing: content-box;
     background-color: white;
 }
 
