@@ -28,6 +28,7 @@ class AllImagePage extends React.Component {
             columnCount: 5,
             isShowImageBlur: '0',
             isShowImageAutoPlay: '0',
+            AutoPlayTime: 5,
         };
     }
 
@@ -35,6 +36,7 @@ class AllImagePage extends React.Component {
         let index = getQueryString('index') || 0
         let isShowImageBlur = window.localStorage.getItem('isShowImageBlur')
         let isShowImageAutoPlay = window.localStorage.getItem('isShowImageAutoPlay')
+        let AutoPlayTime = window.localStorage.getItem('AutoPlayTime')
         if (+index > dataArray.length - 1) {
             antd.message.warning('下标已超出视频资源数量, 默认从0开始加载')
         }
@@ -44,6 +46,7 @@ class AllImagePage extends React.Component {
             currentIndex: +index > dataArray.length - 1 ? 0 : +index,
             isShowImageBlur,
             isShowImageAutoPlay,
+            AutoPlayTime: +AutoPlayTime,
         }, function () {
             self.addMore()
         })
@@ -107,7 +110,7 @@ class AllImagePage extends React.Component {
         if (+this.state.isShowImageAutoPlay == 1) {
             this.interval = setInterval(function () {
                 self.nextImg()
-            }, 6000)
+            }, this.state.AutoPlayTime * 1000)
         }
     }
 
@@ -199,9 +202,11 @@ class AllImagePage extends React.Component {
         if (this.state.isShowSetting) {
             let isShowImageBlur = window.localStorage.getItem('isShowImageBlur')
             let isShowImageAutoPlay = window.localStorage.getItem('isShowImageAutoPlay')
+            let AutoPlayTime = window.localStorage.getItem('AutoPlayTime')
             this.setState({
                 isShowImageBlur,
                 isShowImageAutoPlay,
+                AutoPlayTime: +AutoPlayTime,
             })
         }
         this.setState({
