@@ -24,15 +24,19 @@ class AllImagePage extends React.Component {
             modalItem: {},
             modalIndex: 0,
             isShowSetting: false,
-            // 其它
-            columnCount: 5,
+            // 设置
             isShowImageBlur: '0',
             isShowImageAutoPlay: '0',
+            isShowDelete: '0',
             AutoPlayTime: 5,
+            delArray: [],
+            // 其它
+            columnCount: 5,
         };
     }
 
     componentDidMount() {
+        console.log('AllImagePage');
         let index = getQueryString('index') || 0
         let isShowImageBlur = window.localStorage.getItem('isShowImageBlur')
         let isShowImageAutoPlay = window.localStorage.getItem('isShowImageAutoPlay')
@@ -102,15 +106,28 @@ class AllImagePage extends React.Component {
 
     itemClick(item, index) {
         const self = this
-        this.setState({
-            isShowModal: true,
-            modalItem: item,
-            modalIndex: self.state.initIndex + index
-        })
-        if (+this.state.isShowImageAutoPlay == 1) {
-            this.interval = setInterval(function () {
-                self.nextImg()
-            }, this.state.AutoPlayTime * 1000)
+        const { isShowDelete, delArray } = this.state
+        if (+isShowDelete == 1) {
+            let inde = delArray.indexOf(item)
+            if (inde > -1) {
+                delArray.splice(inde, 1);
+            } else {
+                delArray.push(item)
+            }
+            this.setState({
+                delArray
+            })
+        } else {
+            this.setState({
+                isShowModal: true,
+                modalItem: item,
+                modalIndex: self.state.initIndex + index
+            })
+            if (+this.state.isShowImageAutoPlay == 1) {
+                this.interval = setInterval(function () {
+                    self.nextImg()
+                }, this.state.AutoPlayTime * 1000)
+            }
         }
     }
 
@@ -147,6 +164,38 @@ class AllImagePage extends React.Component {
         this.setState({
             isShowSetting: true,
         })
+    }
+
+    // 删除导出
+    exportFile() {
+        const delArray = this.state.delArray
+        if (delArray.length == 0) {
+            alert('请选择要删除的数据')
+            return
+        }
+        const str = delArray.join(' ')
+
+        // encodeURIComponent 解决中文乱码
+        let uri = 'data:text/csv;charset=utf-8,\ufeff' + encodeURIComponent(str);
+
+        // 通过创建 a标签 实现下载
+        let link = document.createElement("a");
+        link.href = uri;
+        link.download = "待删除列表.txt";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
+    // 删除弹框
+    alertFile() {
+        const delArray = this.state.delArray
+        const str = delArray.join(' ')
+        if (delArray.length == 0) {
+            alert('请选择要删除的数据')
+            return
+        }
+        alert(str)
     }
 
     // 上一张
@@ -202,10 +251,12 @@ class AllImagePage extends React.Component {
         if (this.state.isShowSetting) {
             let isShowImageBlur = window.localStorage.getItem('isShowImageBlur')
             let isShowImageAutoPlay = window.localStorage.getItem('isShowImageAutoPlay')
+            let isShowDelete = window.localStorage.getItem('isShowDelete')
             let AutoPlayTime = window.localStorage.getItem('AutoPlayTime')
             this.setState({
                 isShowImageBlur,
                 isShowImageAutoPlay,
+                isShowDelete,
                 AutoPlayTime: +AutoPlayTime,
             })
         }
@@ -226,9 +277,12 @@ class AllImagePage extends React.Component {
             isShowModal,
             modalItem = [],
             isShowSetting,
+            // 设置
+            isShowImageBlur,
+            isShowDelete,
+            delArray,
             // 其它
             columnCount,
-            isShowImageBlur,
         } = this.state
 
         return (
@@ -236,12 +290,17 @@ class AllImagePage extends React.Component {
                 <div id="container" style={{ columnCount }}>
                     {
                         listData.map((item, index) => {
+                            let inde = delArray.indexOf(item)
+
                             return (
-                                <div key={index} className='itemCon' onClick={this.itemClick.bind(this, item, index)}>
-                                    <img className="item"  src={item} />
-                                    {/*<antd.Button className='itemBtn' danger onClick={this.delete.bind(this, item)}>*/}
-                                    {/*    删除*/}
-                                    {/*</antd.Button>*/}
+                                <div key={index}
+                                     className='itemCon'
+                                     onClick={this.itemClick.bind(this, item, index)}>
+                                    <img className={ +isShowDelete == 1 && inde > -1 ? 'item itemDel' : 'item'}
+                                         src={item} alt='' />
+                                    {
+                                        +isShowDelete == 1 && inde > -1 ? <p className='itemTag'>已删除</p> : null
+                                    }
                                 </div>
                             )
                         })
@@ -259,6 +318,14 @@ class AllImagePage extends React.Component {
                     <img src="views/images/imgBig.png" alt="放大" onClick={this.imgBig.bind(this)} />
                     <img src="views/images/imgSmall.png" alt="缩小" onClick={this.imgSmall.bind(this)} />
                     <img src="views/images/setting.png" alt="设置" onClick={this.setting.bind(this)} />
+                    {
+                        +isShowDelete == 1 ? (
+                            <React.Fragment>
+                                <p onClick={this.exportFile.bind(this)}>{'删除\n导出'}</p>
+                                <p onClick={this.alertFile.bind(this)}>{'删除\n弹框'}</p>
+                            </React.Fragment>
+                        ) : null
+                    }
                 </div>
                 <audio id="audio" src="views/images/此生过半.mp3" loop controls="controls"
                        onPlay={this.playAudio.bind(this)}

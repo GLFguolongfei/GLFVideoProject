@@ -16,6 +16,7 @@ class Setting extends React.Component {
             isShowImageBlur: false,
             isShowImageAutoPlay: false,
             isShowScaleAntD: false,
+            isShowDelete: false,
             AutoPlayTime: 2,
         };
     }
@@ -24,11 +25,13 @@ class Setting extends React.Component {
         let isShowImageBlur = window.localStorage.getItem('isShowImageBlur')
         let isShowImageAutoPlay = window.localStorage.getItem('isShowImageAutoPlay')
         let isShowScaleAntD = window.localStorage.getItem('isShowScaleAntD')
+        let isShowDelete = window.localStorage.getItem('isShowDelete')
         let AutoPlayTime = window.localStorage.getItem('AutoPlayTime')
         this.setState({
             isShowImageBlur: +isShowImageBlur == 1 ? true : false,
             isShowImageAutoPlay: +isShowImageAutoPlay == 1 ? true : false,
             isShowScaleAntD: +isShowScaleAntD == 1 ? true : false,
+            isShowDelete: +isShowDelete == 1 ? true : false,
             AutoPlayTime: +AutoPlayTime,
         })
     }
@@ -65,8 +68,20 @@ class Setting extends React.Component {
         window.localStorage.setItem('AutoPlayTime', event.target.value)
     };
 
+    onChange5(checked) {
+        console.log(checked)
+        this.setState({
+            isShowDelete: checked
+        })
+        window.localStorage.setItem('isShowDelete', checked ? '1' : '0')
+    }
+
     render() {
-        const { containerStyle, textStyle, isShowImageBlur, isShowImageAutoPlay, isShowScaleAntD, AutoPlayTime } = this.state
+        const {
+            containerStyle, textStyle,
+            isShowImageBlur, isShowImageAutoPlay, isShowScaleAntD,
+            isShowDelete, AutoPlayTime
+        } = this.state
 
         return (
             <div style={containerStyle}>
@@ -105,6 +120,13 @@ class Setting extends React.Component {
                     <antd.Switch checked={isShowScaleAntD}
                                  checkedChildren="开启" unCheckedChildren="关闭"
                                  onChange={this.onChange3.bind(this)} />
+                </antd.Space>
+                <br/>
+                <antd.Space>
+                    <p style={textStyle}>是否使用删除功能</p>
+                    <antd.Switch checked={isShowDelete}
+                                 checkedChildren="开启" unCheckedChildren="关闭"
+                                 onChange={this.onChange5.bind(this)} />
                 </antd.Space>
             </div>
         );
