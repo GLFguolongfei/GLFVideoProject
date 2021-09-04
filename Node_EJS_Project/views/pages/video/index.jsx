@@ -30,6 +30,14 @@ class AllVideoPage extends React.Component {
         })
         // 设置标题
         document.title = '视频(' + dataArray.length + ')'
+        // 监听键盘事件
+        $(document).keydown(function(event){
+            if (event.keyCode == 38) { // arrow up
+                self.preVideo()
+            } else if (event.keyCode == 40) { // arrow down
+                self.nextVideo()
+            }
+        });
     }
 
     /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Functions */
@@ -96,13 +104,7 @@ class AllVideoPage extends React.Component {
     // 视频放完
     onEnded(item, index) {
         if (this.state.isCircul) {
-            let idStr = '0'
-            if (index + 1 < dataArray.length) {
-                idStr = (index + 1).toString()
-            }
-            console.log(idStr)
-            let video = document.getElementById(idStr)
-            video.play()
+            this.nextVideo()
         }
     }
 
@@ -145,6 +147,31 @@ class AllVideoPage extends React.Component {
             let ele = array[0]
             ele.scrollIntoViewIfNeeded();
         }
+    }
+
+    /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Tools */
+    // 上一首
+    preVideo() {
+        let index = this.state.playingIndex
+        if (index == 0) {
+            index = this.state.listData.length
+        }
+        let idStr = (index - 1).toString()
+        console.log(idStr)
+        let video = document.getElementById(idStr)
+        video.play()
+    }
+
+    // 下一首
+    nextVideo() {
+        let index = this.state.playingIndex
+        if (index >= this.state.listData.length - 1) {
+            index = -1
+        }
+        let idStr = (index + 1).toString()
+        console.log(idStr)
+        let video = document.getElementById(idStr)
+        video.play()
     }
 
     render() {
