@@ -173,7 +173,11 @@ class AllImagePage extends React.Component {
             alert('请选择要删除的数据')
             return
         }
-        const str = delArray.join(' ')
+        const resultArray = delArray.map(item => {
+            let subStr = item.substring(ipUrl.length)
+            return rootPath + subStr
+        })
+        const str = resultArray.join(' ')
 
         // encodeURIComponent 解决中文乱码
         let uri = 'data:text/csv;charset=utf-8,\ufeff' + encodeURIComponent(str);
@@ -192,7 +196,7 @@ class AllImagePage extends React.Component {
         const delArray = this.state.delArray
         const resultArray = delArray.map(item => {
             let subStr = item.substring(ipUrl.length)
-            return subStr
+            return rootPath + subStr
         })
         const str = resultArray.join(' ')
         if (delArray.length == 0) {

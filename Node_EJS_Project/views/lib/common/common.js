@@ -15,6 +15,9 @@ let dataArray = [];
 /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 加载完成 */
 $(function () {
     console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Ready')
+    console.log('sourceType: ', sourceType)
+    console.log('rootPath: ', rootPath)
+    console.log('ipUrl: ', ipUrl)
 
     // 加载资源
     getSourceData()
