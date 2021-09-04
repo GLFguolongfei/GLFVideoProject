@@ -27,13 +27,16 @@
 
 .item {
     margin: 4px;
+    padding: 8px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 8px;
     border-radius: 8px;
     box-sizing: content-box;
     background-color: white;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .item:hover {
