@@ -8,6 +8,7 @@ const screenH = $(window).height();
 
 // 数据源
 const sourceType = $('.sourceType').text();
+const rootPath = $('.rootPath').text();
 const ipUrl = $('.ipUrl').text();
 let dataArray = [];
 

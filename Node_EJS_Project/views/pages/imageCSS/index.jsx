@@ -190,7 +190,11 @@ class AllImagePage extends React.Component {
     // 删除弹框
     alertFile() {
         const delArray = this.state.delArray
-        const str = delArray.join(' ')
+        const resultArray = delArray.map(item => {
+            let subStr = item.substring(ipUrl.length)
+            return subStr
+        })
+        const str = resultArray.join(' ')
         if (delArray.length == 0) {
             alert('请选择要删除的数据')
             return
@@ -299,7 +303,7 @@ class AllImagePage extends React.Component {
                                     <img className={ +isShowDelete == 1 && inde > -1 ? 'item itemDel' : 'item'}
                                          src={item} alt='' />
                                     {
-                                        +isShowDelete == 1 && inde > -1 ? <p className='itemTag'>已删除</p> : null
+                                        +isShowDelete == 1 && inde > -1 ? <p className='itemTag'>待删除</p> : null
                                     }
                                 </div>
                             )

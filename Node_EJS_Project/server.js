@@ -78,6 +78,7 @@ http.createServer(function (req, res) {
         bianLi()
         ejs.renderFile('views/pages/image/index.ejs', {
             sourceType: sourceType,
+            rootPath: rootPath,
             ipUrl: ipUrl,
             list: imageArray
         }, function (err, data) {
@@ -87,6 +88,7 @@ http.createServer(function (req, res) {
         bianLi()
         ejs.renderFile('views/pages/imageCSS/index.ejs', {
             sourceType: sourceType,
+            rootPath: rootPath,
             ipUrl: ipUrl,
             list: imageArray
         }, function (err, data) {
@@ -96,6 +98,7 @@ http.createServer(function (req, res) {
         bianLi()
         ejs.renderFile('views/pages/imageCSSBD/index.ejs', {
             sourceType: sourceType,
+            rootPath: rootPath,
             ipUrl: ipUrl,
             list: imageArray
         }, function (err, data) {
@@ -105,6 +108,7 @@ http.createServer(function (req, res) {
         bianLi()
         ejs.renderFile('views/pages/video/index.ejs', {
             sourceType: sourceType,
+            rootPath: rootPath,
             ipUrl: ipUrl,
             list: videoArray
         }, function (err, data) {
@@ -114,6 +118,7 @@ http.createServer(function (req, res) {
         bianLi()
         ejs.renderFile('views/pages/videoCSS/index.ejs', {
             sourceType: sourceType,
+            rootPath: rootPath,
             ipUrl: ipUrl,
             list: videoArray
         }, function (err, data) {
@@ -123,6 +128,7 @@ http.createServer(function (req, res) {
         bianLi()
         ejs.renderFile('views/pages/videoDY/index.ejs', {
             sourceType: sourceType,
+            rootPath: rootPath,
             ipUrl: ipUrl,
             list: videoArray
         }, function (err, data) {
@@ -136,6 +142,7 @@ http.createServer(function (req, res) {
         bianLi()
         ejs.renderFile('views/pages/test/index.ejs', {
             sourceType: sourceType,
+            rootPath: rootPath,
             ipUrl: ipUrl,
             list: htmlArray
         }, function (err, data) {
