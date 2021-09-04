@@ -40,6 +40,7 @@ class AllImagePage extends React.Component {
         let index = getQueryString('index') || 0
         let isShowImageBlur = window.localStorage.getItem('isShowImageBlur')
         let isShowImageAutoPlay = window.localStorage.getItem('isShowImageAutoPlay')
+        let isShowDelete = window.localStorage.getItem('isShowDelete')
         let AutoPlayTime = window.localStorage.getItem('AutoPlayTime')
         if (+index > dataArray.length - 1) {
             antd.message.warning('下标已超出视频资源数量, 默认从0开始加载')
@@ -50,6 +51,7 @@ class AllImagePage extends React.Component {
             currentIndex: +index > dataArray.length - 1 ? 0 : +index,
             isShowImageBlur,
             isShowImageAutoPlay,
+            isShowDelete,
             AutoPlayTime: +AutoPlayTime,
         }, function () {
             self.addMore()
