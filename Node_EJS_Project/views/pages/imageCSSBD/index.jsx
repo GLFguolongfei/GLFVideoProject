@@ -48,7 +48,7 @@ class AllImagePage extends React.Component {
 
         // 重置数据
         let array = []
-        for (let i = 0; i < dataArray.length; i++) {
+        for (let i = index; i < dataArray.length; i++) {
             let item = dataArray[i]
             let size = {width: 100, height: 100}
             if (i > +index && i < +index + 150) {
