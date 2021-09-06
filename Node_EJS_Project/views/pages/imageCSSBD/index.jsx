@@ -59,7 +59,7 @@ class AllImagePage extends React.Component {
                 ...size
             })
         }
-        console.log(array)
+        // console.log(array)
 
         const self = this
         this.setState({
