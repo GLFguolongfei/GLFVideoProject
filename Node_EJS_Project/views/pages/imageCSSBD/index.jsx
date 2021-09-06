@@ -49,9 +49,12 @@ class AllImagePage extends React.Component {
         // 重置数据
         let array = []
         for (let i = index; i < dataArray.length; i++) {
+            if (i - index > 150) {
+                break;
+            }
             let item = dataArray[i]
             let size = {width: 100, height: 100}
-            if (i > +index && i < +index + 150) {
+            if (i >= +index && i < +index + 150) {
                 size = await this.getImgSize(item)
             }
             array.push({
@@ -59,7 +62,7 @@ class AllImagePage extends React.Component {
                 ...size
             })
         }
-        // console.log(array)
+        console.log(array)
 
         const self = this
         this.setState({
@@ -113,7 +116,7 @@ class AllImagePage extends React.Component {
             currentIndex,
             listData,
         }, function () {
-            if (type == 2 && allData.length - initIndex > 150) {
+            if (type == 2 && listData.length < 150) {
                 antd.message.warning('最多一次加载 ' + (currentIndex - initIndex) + ' / 150 条')
                 if (currentIndex - initIndex < 150) {
                     setTimeout(function () {
@@ -281,6 +284,9 @@ class AllImagePage extends React.Component {
             img.onload = function() {
                 // let message = 'width:' + img.width + ', height:' + img.height
                 // console.log(message)
+                if (img.width == 100) {
+                    debugger
+                }
                 resolve({
                     width: img.width,
                     height: img.height,
@@ -288,8 +294,8 @@ class AllImagePage extends React.Component {
             }
             img.onerror = function () {
                 resolve({
-                    width: 100,
-                    height: 100,
+                    width: 0,
+                    height: 0,
                 })
             }
         })
