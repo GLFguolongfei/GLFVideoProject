@@ -96,7 +96,7 @@ class AllImagePage extends React.Component {
             listData,
         }, function () {
             if (type == 2 && dataArray.length - initIndex > 150) {
-                antd.message.warning('最多一次加载 ' + (currentIndex - initIndex) + ' / 150 条')
+                antd.message.success('最多一次加载 ' + (currentIndex - initIndex) + ' / 150 条')
                 if (currentIndex - initIndex < 150) {
                     setTimeout(function () {
                         self.addMore(2)
