@@ -38,6 +38,9 @@ $(document).keydown(function(event){
         preVideo()
     } else if (event.keyCode == 40) { // arrow down
         nextVideo()
+    } else if (event.keyCode == 37 || event.keyCode == 39) { // arrow left || right
+        // 聚焦
+        $('#video').focus();
     }
 });
 
