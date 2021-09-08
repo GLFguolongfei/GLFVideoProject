@@ -31,7 +31,7 @@ class AllImagePage extends React.Component {
             AutoPlayTime: 5,
             delArray: [],
             // 其它
-            columnCount: 5,
+            columnCount: 6,
         };
     }
 
