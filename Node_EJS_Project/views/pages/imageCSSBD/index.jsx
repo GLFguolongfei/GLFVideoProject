@@ -23,7 +23,6 @@ class AllImagePage extends React.Component {
             // 弹框
             isShowModal: false,
             modalItem: {},
-            modalIndex: 0,
             isShowSetting: false,
             // 设置
             isShowImageBlur: '0',
@@ -68,7 +67,6 @@ class AllImagePage extends React.Component {
         this.setState({
             allData: array,
             initIndex: +index > dataArray.length - 1 ? 0 : +index,
-            currentIndex: +index > dataArray.length - 1 ? 0 : +index,
             isShowImageBlur,
             isShowImageAutoPlay,
             isShowScaleAntD,
@@ -94,8 +92,9 @@ class AllImagePage extends React.Component {
     addMore(type = 1) {
         let { initIndex, currentIndex, pageSize, allData = [], listData = [] } = this.state
         // 翻页
-        if (currentIndex - initIndex >= 150) {
-            let url = window.location.origin + window.location.pathname + '?index=' + currentIndex
+        if (currentIndex >= 150) {
+            let start = initIndex + currentIndex
+            let url = window.location.origin + window.location.pathname + '?index=' + start
             window.location.href = url
             return
         }
@@ -117,8 +116,8 @@ class AllImagePage extends React.Component {
             listData,
         }, function () {
             if (type == 2 && listData.length < 150) {
-                antd.message.success('最多一次加载 ' + (currentIndex - initIndex) + ' / 150 条')
-                if (currentIndex - initIndex < 150) {
+                antd.message.success('最多一次加载 ' + (currentIndex + 15) + ' / 150 条')
+                if (currentIndex < 150) {
                     setTimeout(function () {
                         self.addMore(2)
                     }, 500)
@@ -136,7 +135,7 @@ class AllImagePage extends React.Component {
         this.setState({
             isShowModal: true,
             modalItem: item,
-            modalIndex: self.state.initIndex + index
+            currentIndex: index,
         })
         if (+this.state.isShowImageAutoPlay == 1) {
             this.interval = setInterval(function () {
@@ -208,14 +207,14 @@ class AllImagePage extends React.Component {
     preImg(event) {
         event && event.stopPropagation();
         let allData = this.state.allData || []
-        let modalIndex = this.state.modalIndex
-        modalIndex--
-        if (modalIndex < 0) {
-            modalIndex = allData.length - 1
+        let currentIndex = this.state.currentIndex
+        currentIndex--
+        if (currentIndex < 0) {
+            currentIndex = allData.length - 1
         }
         this.setState({
-            modalItem: allData[modalIndex],
-            modalIndex
+            modalItem: allData[currentIndex],
+            currentIndex,
         })
     }
 
@@ -223,14 +222,14 @@ class AllImagePage extends React.Component {
     nextImg(event) {
         event && event.stopPropagation();
         let allData = this.state.allData || []
-        let modalIndex = this.state.modalIndex
-        modalIndex++
-        if (modalIndex >= allData.length) {
-            modalIndex = 0
+        let currentIndex = this.state.currentIndex
+        currentIndex++
+        if (currentIndex >= allData.length) {
+            currentIndex = 0
         }
         this.setState({
-            modalItem: allData[modalIndex],
-            modalIndex
+            modalItem: allData[currentIndex],
+            currentIndex,
         })
     }
 
