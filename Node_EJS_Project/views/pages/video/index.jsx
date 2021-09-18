@@ -90,8 +90,11 @@ class AllVideoPage extends React.Component {
             }
         }
 
+        const self = this
         this.setState({
             playingIndex: index
+        }, function () {
+            self.scrollToCurrent()
         })
 
         // 设置标题
