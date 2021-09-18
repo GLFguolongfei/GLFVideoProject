@@ -70,6 +70,7 @@ function playVideo(self) {
     let title = name.split('.')[0];
     // 设置标题
     document.title =  (currentIndex + 1) + '/' + dataArray.length + '-' + title;
+    antd.message.success((currentIndex + 1) + ' - ' + title)
     // 保存本地
     window.localStorage.setItem('title', name)
 }

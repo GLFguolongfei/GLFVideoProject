@@ -104,6 +104,7 @@ class AllVideoPage extends React.Component {
         let name = pathArray[pathArray.length-1];
         let title = name.split('.')[0];
         document.title = (this.state.initIndex + index + 1) + '/' + dataArray.length + '-' + title;
+        antd.message.success((this.state.initIndex + index + 1) + ' - ' + title)
     }
 
     // 视频放完
