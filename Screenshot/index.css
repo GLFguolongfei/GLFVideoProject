@@ -1,0 +1,23 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background: black url('images/bg5.jpeg') no-repeat fixed;
+    background-size: cover;
+}
+
+.container {
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+img {
+    /*width: 33.33%;*/
+    height: 80vh;
+}

@@ -3,7 +3,7 @@ let path = require("path")
 // 1-本地(sources文件夹)资源
 // 2-iCloud资源
 // 3-Document资源
-let sourceType = 2 // 2 // 2 // 2 // 2 // 2
+let sourceType = 2 // 2 // 2 // 2 // 2 // 2 // 2 // 2 // 2
 
 let rootPath = ""
 let ipUrl = ""
