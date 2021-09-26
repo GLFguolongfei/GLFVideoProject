@@ -29,6 +29,15 @@ for (var i = 0; i < videos.length; i++) {
 }
 $(".container").append(html);
 
+var url = "./iCloudVideo.js"
+
+fetch(url).then(function(response) {
+    console.log(response);
+}, function(error) {
+    console.log(error)
+})
+
+
 /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 方法 */
 function playVideo(self) {
     currentEle = self;
@@ -54,8 +63,8 @@ function endVideo(self) {
     if (isCircul) {
         let idStr = '0'
         if (parseInt(self.id) + 1 < videos.length) {
-            idStr = parseInt(self.id) + 1 + ''  
-        } 
+            idStr = parseInt(self.id) + 1 + ''
+        }
         console.log(idStr)
         let video = document.getElementById(idStr)
         playVideo(video)
